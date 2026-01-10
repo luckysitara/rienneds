@@ -5,32 +5,28 @@ import { Star } from "lucide-react"
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    role: "Security Analyst",
-    image: "👩‍💼",
+    name: "Stella Adetutu",
+    role: "Digital Marketer",
     content:
-      "The ethical hacking course transformed my career. The hands-on labs were incredibly practical and the instructors were always available to help.",
+      "My experience learning from Rienne Digital Solutions has transformed my approach to digital marketing. The training offered invaluable insights into leveraging data and analytics for effective campaigns. The hands-on projects were incredibly practical, and the instructors were always available to provide support, making the learning process both engaging and impactful.",
   },
   {
-    name: "Ahmed Hassan",
+    name: "Emem Etim",
     role: "Full Stack Developer",
-    image: "👨‍💻",
     content:
-      "Outstanding full stack training! I landed a job at a top tech company within 3 months of completing the program. Highly recommended!",
+      "Outstanding full stack training at Rienne Digital Solutions! Within three months of completing the program, I secured a position at a top tech company. The curriculum was comprehensive and hands-on, making it an invaluable experience. I highly recommend their training to anyone looking to advance their tech career!",
   },
   {
-    name: "Maria Garcia",
-    role: "Security Consultant",
-    image: "👩‍🔬",
+    name: "Jephtah Ofopele",
+    role: "Quality Assurance",
     content:
-      "The penetration testing course gave me the skills to launch my consulting business. The certification prep was top-notch.",
+      "The penetration testing course equipped me with vital skills that significantly enhance my role in Quality Assurance. The insights gained from understanding vulnerabilities and security risks enable me to implement more effective testing strategies. The certification preparation was exceptional and provided a solid foundation for ensuring the highest quality in software delivery.",
   },
   {
-    name: "James Chen",
-    role: "Data Engineer",
-    image: "👨‍🏫",
+    name: "Bughacker",
+    role: "Founder SOLPAY",
     content:
-      "Exceptional data engineering program. The real-world projects and mentorship helped me transition into the field successfully.",
+      "Rienne Digital Solutions played a crucial role in building and auditing my blockchain project, Solpay. Their expertise and attention to detail were exemplary, ensuring the project's integrity and security. The support and quality of their services made a significant difference in our development process, allowing us to confidently move forward.",
   },
 ]
 

@@ -8,20 +8,22 @@ import { Clock, Users, Trophy } from "lucide-react"
 const courses = [
   {
     category: "Cybersecurity",
-    title: "Ethical Hacking Fundamentals",
+    title: "Cybersecurity Fundamentals",
     duration: "12 weeks",
     level: "Beginner",
-    students: "2500+",
-    price: "299",
-    description: "Master the fundamentals of ethical hacking and penetration testing from scratch.",
+    students: "250+",
+    price: "465k",
+    currency: "₦",
+    description: "Master the fundamentals of Cybersecurity from scratch.",
   },
   {
     category: "Pentesting",
     title: "Advanced Penetration Testing",
     duration: "10 weeks",
     level: "Advanced",
-    students: "1200+",
-    price: "499",
+    students: "120+",
+    price: "542k",
+    currency: "₦",
     description: "Deep dive into advanced penetration testing techniques and real-world scenarios.",
   },
   {
@@ -29,8 +31,9 @@ const courses = [
     title: "React & Frontend Mastery",
     duration: "8 weeks",
     level: "Intermediate",
-    students: "3000+",
-    price: "249",
+    students: "300+",
+    price: "465k",
+    currency: "₦",
     description: "Build modern, interactive web applications with React and cutting-edge tools.",
   },
   {
@@ -38,8 +41,9 @@ const courses = [
     title: "Backend Development with Node.js",
     duration: "10 weeks",
     level: "Intermediate",
-    students: "2200+",
-    price: "299",
+    students: "220+",
+    price: "465k",
+    currency: "₦",
     description: "Create scalable backend systems using Node.js, databases, and APIs.",
   },
   {
@@ -47,8 +51,9 @@ const courses = [
     title: "Full Stack Web Development",
     duration: "16 weeks",
     level: "Intermediate",
-    students: "1800+",
-    price: "699",
+    students: "180+",
+    price: "620k",
+    currency: "₦",
     description: "Complete full stack development from frontend to backend and deployment.",
   },
   {
@@ -56,8 +61,9 @@ const courses = [
     title: "Data Science & Analytics",
     duration: "12 weeks",
     level: "Intermediate",
-    students: "1500+",
-    price: "399",
+    students: "150+",
+    price: "465k",
+    currency: "₦",
     description: "Learn data science, machine learning, and analytics with Python and tools.",
   },
   {
@@ -65,8 +71,9 @@ const courses = [
     title: "Data Engineering Fundamentals",
     duration: "10 weeks",
     level: "Advanced",
-    students: "800+",
-    price: "449",
+    students: "80+",
+    price: "310k",
+    currency: "₦",
     description: "Master data pipelines, ETL processes, and big data technologies.",
   },
   {
@@ -74,9 +81,50 @@ const courses = [
     title: "Mobile App Development",
     duration: "12 weeks",
     level: "Intermediate",
-    students: "1600+",
-    price: "349",
+    students: "160+",
+    price: "310k",
+    currency: "₦",
     description: "Build production-ready iOS and Android applications with modern frameworks.",
+  },
+  {
+    category: "Web3",
+    title: "Blockchain & Web3 Development",
+    duration: "10 weeks",
+    level: "Intermediate",
+    students: "95+",
+    price: "465k",
+    currency: "₦",
+    description: "Learn smart contract development, DApps, and blockchain security fundamentals.",
+  },
+  {
+    category: "Marketing",
+    title: "Digital Marketing Mastery",
+    duration: "8 weeks",
+    level: "Beginner",
+    students: "140+",
+    price: "150k",
+    currency: "₦",
+    description: "Learn SEO, social media marketing, content strategy, and digital advertising.",
+  },
+  {
+    category: "Security",
+    title: "SOC Analyst Bootcamp",
+    duration: "12 weeks",
+    level: "Advanced",
+    students: "65+",
+    price: "350k",
+    currency: "₦",
+    description: "Master Security Operations Center (SOC) tools, threat detection, and incident response.",
+  },
+  {
+    category: "Design",
+    title: "Graphic Design Essentials",
+    duration: "6 weeks",
+    level: "Beginner",
+    students: "210+",
+    price: "100k",
+    currency: "₦",
+    description: "Create stunning visuals using industry-standard design tools and principles.",
   },
 ]
 
@@ -88,6 +136,10 @@ const categoryColors: Record<string, string> = {
   Fullstack: "bg-purple-500/20 text-purple-700 dark:text-purple-400",
   Data: "bg-indigo-500/20 text-indigo-700 dark:text-indigo-400",
   Mobile: "bg-cyan-500/20 text-cyan-700 dark:text-cyan-400",
+  Web3: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-400",
+  Marketing: "bg-pink-500/20 text-pink-700 dark:text-pink-400",
+  Security: "bg-violet-500/20 text-violet-700 dark:text-violet-400",
+  Design: "bg-rose-500/20 text-rose-700 dark:text-rose-400",
 }
 
 export default function Courses() {
@@ -126,7 +178,10 @@ export default function Courses() {
                 </div>
                 <div className="flex items-end justify-between gap-3">
                   <div>
-                    <div className="text-2xl font-bold text-primary">${course.price}</div>
+                    <div className="text-2xl font-bold text-primary">
+                      {course.currency || "$"}
+                      {course.price}
+                    </div>
                     <div className="text-xs text-muted-foreground">One-time payment</div>
                   </div>
                   <Button size="sm">Enroll</Button>
