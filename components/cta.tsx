@@ -1,42 +1,35 @@
 "use client"
 
-import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-import { ContactFormModal } from "@/components/contact-form-modal"
 
 export default function CTA() {
-  const [showContactForm, setShowContactForm] = useState(false)
-
   return (
-    <>
-      <section id="contact" className="py-20 sm:py-28 bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Ready to Secure Your Future?</h2>
-            <p className="mt-6 text-lg opacity-90">
-              Join thousands of professionals who have transformed their careers with our training programs and
-              services. Start your journey today.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" className="gap-2" onClick={() => setShowContactForm(true)}>
-                Register Interest
-                <ArrowRight size={18} />
+    <section className="py-28 sm:py-36 lg:py-40 bg-primary text-primary-foreground">
+      <div className="px-6 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Ready to Get Started?</h2>
+          <p className="mt-8 text-lg sm:text-xl opacity-90">
+            Explore our comprehensive range of professional services and training programs designed to accelerate your
+            career and secure your digital future.
+          </p>
+          <div className="mt-12 flex flex-col sm:flex-row gap-5 justify-center">
+            <Link href="#services">
+              <Button size="lg" variant="secondary" className="gap-2 w-full sm:w-auto text-base py-6 px-8">
+                Explore Services
+                <ArrowRight size={20} />
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-                onClick={() => setShowContactForm(true)}
-              >
-                Contact Us
+            </Link>
+            <Link href="/courses">
+              <Button size="lg" variant="secondary" className="gap-2 w-full sm:w-auto text-base py-6 px-8">
+                View Courses
+                <ArrowRight size={20} />
               </Button>
-            </div>
+            </Link>
           </div>
         </div>
-      </section>
-
-      <ContactFormModal isOpen={showContactForm} onClose={() => setShowContactForm(false)} />
-    </>
+      </div>
+    </section>
   )
 }

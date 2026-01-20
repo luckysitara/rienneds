@@ -42,8 +42,10 @@ export function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error("Failed to send message")
+        throw new Error(data.error || "Failed to send message")
       }
 
       toast({
@@ -54,9 +56,11 @@ export function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
       setFormData({ email: "", interest: "", details: "" })
       onClose()
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to send your message"
+      console.log("[v0] Form submission error:", errorMessage)
       toast({
         title: "Error",
-        description: "Failed to send your message. Please try again.",
+        description: errorMessage,
         variant: "destructive",
       })
     } finally {
@@ -113,20 +117,28 @@ export function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
                 className="w-full px-3 py-2 rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">Select an option</option>
-                <option value="Penetration Testing">Penetration Testing Service</option>
-                <option value="Ethical Hacking">Ethical Hacking Service</option>
-                <option value="Software Development">Software Development</option>
-                <option value="Web Development">Web Development</option>
-                <option value="Cybersecurity">Cybersecurity Service</option>
-                <option value="Training - Cybersecurity">Training - Cybersecurity</option>
-                <option value="Training - Ethical Hacking">Training - Ethical Hacking</option>
-                <option value="Training - Pentesting">Training - Pentesting</option>
-                <option value="Training - Frontend">Training - Frontend Development</option>
-                <option value="Training - Backend">Training - Backend Development</option>
-                <option value="Training - Fullstack">Training - Fullstack Development</option>
-                <option value="Training - Data Science">Training - Data Science</option>
-                <option value="Training - Data Engineering">Training - Data Engineering</option>
-                <option value="Training - Mobile">Training - Mobile Development</option>
+                <optgroup label="Services">
+                  <option value="Penetration Testing">Penetration Testing Service</option>
+                  <option value="Ethical Hacking">Ethical Hacking Service</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Cybersecurity">Cybersecurity Service</option>
+                  <option value="Web3 Development">Blockchain & Web3 Development</option>
+                </optgroup>
+                <optgroup label="Training Programs">
+                  <option value="Training - Cybersecurity">Cybersecurity</option>
+                  <option value="Training - Ethical Hacking">Ethical Hacking</option>
+                  <option value="Training - Pentesting">Penetration Testing</option>
+                  <option value="Training - Frontend">Frontend Development</option>
+                  <option value="Training - Backend">Backend Development</option>
+                  <option value="Training - Fullstack">Fullstack Development</option>
+                  <option value="Training - Data Science">Data Science</option>
+                  <option value="Training - Data Engineering">Data Engineering</option>
+                  <option value="Training - Mobile">Mobile Development</option>
+                  <option value="Training - Web3">Blockchain & Web3 Development</option>
+                  <option value="Training - Digital Marketing">Digital Marketing</option>
+                  <option value="Training - SOC Analyst">SOC Analyst</option>
+                  <option value="Training - Graphic Design">Graphic Design</option>
+                </optgroup>
                 <option value="Other">Other</option>
               </select>
             </div>

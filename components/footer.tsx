@@ -7,13 +7,16 @@ import Image from "next/image"
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-muted/50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div className="px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 sm:gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Image src="/logo.png" alt="Rienne Digital Solutions" width={32} height={32} className="h-8 w-8" />
-              <span className="font-bold text-lg">Rienne</span>
+            <div className="flex items-center gap-3 mb-4">
+              <Image src="/logo.png" alt="Rienne Digital Solutions" width={48} height={48} className="h-12 w-12" />
+              <div className="flex flex-col">
+                <span className="font-bold text-base">Rienne</span>
+                <span className="font-bold text-sm text-primary">Digital Solutions</span>
+              </div>
             </div>
             <p className="text-sm text-muted-foreground">
               Empowering professionals with cybersecurity expertise and cutting-edge tech skills through digital
@@ -42,7 +45,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="hover:text-primary transition-colors">
-                  Security Consulting
+                  Blockchain & Web3
                 </Link>
               </li>
             </ul>
@@ -69,44 +72,32 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="hover:text-primary transition-colors">
-                  Mobile Dev
+                  Web3 Development
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Instagram QR Code */}
           <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-            <div className="bg-background rounded-lg p-3 inline-block border border-border">
-              <Image
-                src="/instagram-qr.png"
-                alt="Rienne Digital Solutions Instagram QR Code"
-                width={150}
-                height={150}
-                className="w-[150px] h-[150px]"
-              />
-            </div>
-            <p className="text-xs text-muted-foreground mt-3">Scan to follow us on Instagram</p>
+            <h3 className="font-semibold mb-4">Follow Us</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Connect with us on social media for updates and industry insights.
+            </p>
+            <a
+              href="https://instagram.com/riennedigitalsolutions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
+            >
+              <Instagram size={18} />
+              @riennedigitalsolutions
+            </a>
           </div>
         </div>
 
         {/* Divider */}
         <div className="border-t border-border py-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">© 2025 Rienne Digital Solutions. All rights reserved.</p>
-            <div className="flex gap-4">
-              <a
-                href="https://instagram.com/riennedigitalsolutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Instagram size={20} />
-              </a>
-            </div>
-          </div>
+          <p className="text-sm text-muted-foreground text-center">© 2025 Rienne Digital Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>

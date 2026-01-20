@@ -14,7 +14,7 @@ const testimonials = [
     name: "Emem Etim",
     role: "Full Stack Developer",
     content:
-      "Outstanding full stack training at Rienne Digital Solutions! Within three months of completing the program, I secured a position at a top tech company. The curriculum was comprehensive and hands-on, making it an invaluable experience. I highly recommend their training to anyone looking to advance their tech career!",
+      "Outstanding full stack training! I landed a job at a top tech company within 3 months of completing the program. Highly recommended!",
   },
   {
     name: "Jephtah Ofopele",
@@ -32,14 +32,14 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Trusted by Professionals</h2>
-          <p className="mt-4 text-lg text-muted-foreground">See what our graduates and clients have to say about us</p>
+    <section className="py-28 sm:py-36 lg:py-40">
+      <div className="px-6 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Trusted by Professionals</h2>
+          <p className="mt-6 text-lg sm:text-xl text-muted-foreground">See what our graduates and clients have to say about us</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
           {testimonials.map((testimonial, index) => (
             <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">

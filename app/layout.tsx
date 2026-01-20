@@ -12,22 +12,31 @@ export const metadata: Metadata = {
   description:
     "Professional cybersecurity services, ethical hacking, penetration testing, and comprehensive tech education programs. Rienne Digital Solutions - Secure Your Digital Future.",
   generator: "v0.app",
-  icons: {
-    icon: [
+  openGraph: {
+    title: "Rienne Digital Solutions - Cybersecurity & Tech Education",
+    description:
+      "Professional cybersecurity services, ethical hacking, penetration testing, and comprehensive tech education programs.",
+    url: "https://riennedigitalsolutions.com",
+    siteName: "Rienne Digital Solutions",
+    images: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Rienne Digital Solutions Logo",
       },
     ],
-    apple: "/apple-icon.png",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rienne Digital Solutions",
+    description: "Cybersecurity services and tech education",
+    images: ["/logo.png"],
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 }
 
@@ -38,6 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+      </head>
       <body className={`font-sans antialiased`}>
         {children}
         <Analytics />

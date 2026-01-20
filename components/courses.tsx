@@ -12,7 +12,7 @@ const courses = [
     duration: "12 weeks",
     level: "Beginner",
     students: "250+",
-    price: "465k",
+    price: "200k",
     currency: "₦",
     description: "Master the fundamentals of Cybersecurity from scratch.",
   },
@@ -22,7 +22,7 @@ const courses = [
     duration: "10 weeks",
     level: "Advanced",
     students: "120+",
-    price: "542k",
+    price: "250k",
     currency: "₦",
     description: "Deep dive into advanced penetration testing techniques and real-world scenarios.",
   },
@@ -32,7 +32,7 @@ const courses = [
     duration: "8 weeks",
     level: "Intermediate",
     students: "300+",
-    price: "465k",
+    price: "200k",
     currency: "₦",
     description: "Build modern, interactive web applications with React and cutting-edge tools.",
   },
@@ -42,7 +42,7 @@ const courses = [
     duration: "10 weeks",
     level: "Intermediate",
     students: "220+",
-    price: "465k",
+    price: "200k",
     currency: "₦",
     description: "Create scalable backend systems using Node.js, databases, and APIs.",
   },
@@ -52,7 +52,7 @@ const courses = [
     duration: "16 weeks",
     level: "Intermediate",
     students: "180+",
-    price: "620k",
+    price: "300k",
     currency: "₦",
     description: "Complete full stack development from frontend to backend and deployment.",
   },
@@ -62,7 +62,7 @@ const courses = [
     duration: "12 weeks",
     level: "Intermediate",
     students: "150+",
-    price: "465k",
+    price: "200k",
     currency: "₦",
     description: "Learn data science, machine learning, and analytics with Python and tools.",
   },
@@ -72,7 +72,7 @@ const courses = [
     duration: "10 weeks",
     level: "Advanced",
     students: "80+",
-    price: "310k",
+    price: "200k",
     currency: "₦",
     description: "Master data pipelines, ETL processes, and big data technologies.",
   },
@@ -82,7 +82,7 @@ const courses = [
     duration: "12 weeks",
     level: "Intermediate",
     students: "160+",
-    price: "310k",
+    price: "200k",
     currency: "₦",
     description: "Build production-ready iOS and Android applications with modern frameworks.",
   },
@@ -92,7 +92,7 @@ const courses = [
     duration: "10 weeks",
     level: "Intermediate",
     students: "95+",
-    price: "465k",
+    price: "350k",
     currency: "₦",
     description: "Learn smart contract development, DApps, and blockchain security fundamentals.",
   },
@@ -144,16 +144,16 @@ const categoryColors: Record<string, string> = {
 
 export default function Courses() {
   return (
-    <section id="courses" className="py-20 sm:py-28 bg-muted/50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Learn From Experts</h2>
-          <p className="mt-4 text-lg text-muted-foreground">
+    <section id="courses" className="py-28 sm:py-36 lg:py-40">
+      <div className="px-6 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Rienne Academy</h2>
+          <p className="mt-6 text-lg sm:text-xl text-muted-foreground">
             Comprehensive training programs in cybersecurity and tech skills
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
           {courses.map((course, index) => (
             <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow hover:border-primary/50">
               <CardHeader>
