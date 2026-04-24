@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Send, ShieldCheck } from "lucide-react";
-import { useState, useRef } from "react";
+import { Mail, Phone, MapPin, Send, ShieldCheck, CheckCircle2 } from "lucide-react";
+import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function Contact() {

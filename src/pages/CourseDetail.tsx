@@ -1,142 +1,118 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { ArrowLeft, CheckCircle2, Star, Clock, Users, ArrowRight, ShieldCheck } from "lucide-react";
 import { courses } from "../data";
-import { ArrowLeft, Clock, Users, Star, CheckCircle2, ArrowRight, BookOpen } from "lucide-react";
-import { useEffect } from "react";
 
 export default function CourseDetail() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const course = courses.find((c) => c.id === id);
 
-  useEffect(() => {
-    if (!course) {
-      navigate("/courses");
-    }
-  }, [course, navigate]);
-
-  if (!course) return null;
+  if (!course) {
+    return (
+      <div className="pt-40 pb-24 text-center">
+        <h2 className="text-2xl font-bold">Course not found</h2>
+        <Link to="/courses" className="text-accent mt-4 inline-block">Back to Courses</Link>
+      </div>
+    );
+  }
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="pt-32 pb-24"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="pt-40 pb-24 bg-mesh"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <Link 
-          to="/courses" 
-          className="inline-flex items-center gap-2 text-indigo-600 font-bold mb-12 hover:gap-3 transition-all"
-        >
-          <ArrowLeft className="w-5 h-5" /> Back to Courses
+        <Link to="/courses" className="inline-flex items-center gap-2 text-prussian font-black text-xs uppercase tracking-widest hover:text-accent transition-colors mb-12">
+          <ArrowLeft className="w-4 h-4" /> Back to Academy
         </Link>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider mb-6">
-              {course.category} • {course.level}
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-              {course.title}
-            </h1>
-            <div className="flex flex-wrap gap-8 mb-10">
-              <div className="flex items-center gap-2 text-slate-600 font-medium">
-                <Clock className="w-5 h-5 text-indigo-600" /> {course.duration}
-              </div>
-              <div className="flex items-center gap-2 text-slate-600 font-medium">
-                <Users className="w-5 h-5 text-indigo-600" /> {course.students} Students
-              </div>
-              <div className="flex items-center gap-2 text-amber-500 font-bold">
-                <Star className="w-5 h-5 fill-current" /> {course.rating} Rating
-              </div>
-            </div>
-            <p className="text-xl text-slate-600 mb-12 leading-relaxed">
-              {course.longDescription}
-            </p>
-
-            <div className="space-y-16">
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                  <BookOpen className="w-6 h-6 text-indigo-600" /> Course Curriculum
-                </h3>
-                <div className="space-y-4">
-                  {course.curriculum.map((item, i) => (
-                    <div key={i} className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-indigo-200 transition-all">
-                      <div className="w-8 h-8 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-sm">
-                        {i + 1}
-                      </div>
-                      <span className="text-slate-700 font-bold">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-indigo-600" /> Learning Outcomes
-                </h3>
-                <div className="grid sm:grid-cols-2 gap-6">
-                  {course.outcomes.map((outcome, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="w-6 h-6 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <CheckCircle2 className="w-4 h-4" />
-                      </div>
-                      <p className="text-slate-600 leading-relaxed font-medium">{outcome}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="sticky top-32"
-          >
-            <div className="bg-white p-8 rounded-[3rem] shadow-2xl border border-slate-100">
-              <div className="rounded-2xl overflow-hidden mb-8 aspect-video">
-                <img 
-                  src={course.image} 
-                  alt={course.title} 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div className="flex items-center justify-between mb-8">
-                <div>
-                  <p className="text-slate-500 text-sm mb-1 uppercase font-bold tracking-widest">Course Price</p>
-                  <p className="text-4xl font-black text-slate-900">{course.price}</p>
-                </div>
-                <div className="text-right">
-                  <p className="text-slate-500 text-sm mb-1 uppercase font-bold tracking-widest">Instructor</p>
-                  <p className="text-lg font-bold text-slate-900">{course.instructor}</p>
-                </div>
-              </div>
-              <button className="w-full bg-indigo-600 text-white py-5 rounded-2xl font-bold text-xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center gap-3 group mb-4">
-                Enroll Now <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <p className="text-center text-slate-500 text-sm font-medium">
-                30-Day Money-Back Guarantee • Lifetime Access
-              </p>
-            </div>
+        <div className="grid lg:grid-cols-12 gap-16">
+          <div className="lg:col-span-8">
+            <h1 className="text-4xl md:text-6xl font-black text-prussian mb-8 uppercase font-heading tracking-tighter leading-tight">{course.title}</h1>
             
-            <div className="mt-8 p-6 bg-slate-900 rounded-3xl text-white flex items-center gap-6">
-              <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0">
-                <Star className="w-8 h-8 fill-current" />
+            <div className="flex flex-wrap gap-8 mb-12 pb-12 border-b border-slate-100">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-prussian/5 rounded-2xl flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Duration</p>
+                  <p className="font-bold text-prussian">{course.duration}</p>
+                </div>
               </div>
-              <div>
-                <p className="font-bold text-lg">Top Rated Course</p>
-                <p className="text-slate-400 text-sm">Join thousands of students who have already transformed their careers.</p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-prussian/5 rounded-2xl flex items-center justify-center">
+                  <Users className="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Students</p>
+                  <p className="font-bold text-prussian">{course.students}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-prussian/5 rounded-2xl flex items-center justify-center">
+                  <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Rating</p>
+                  <p className="font-bold text-prussian">{course.rating}/5.0</p>
+                </div>
               </div>
             </div>
-          </motion.div>
+
+            <div className="prose prose-lg max-w-none">
+              <h3 className="text-2xl font-black text-prussian uppercase font-heading mb-6 tracking-tight">Track Overview</h3>
+              <p className="text-slate-600 text-lg leading-relaxed font-medium mb-12">
+                {course.longDescription}
+              </p>
+
+              <h3 className="text-2xl font-black text-prussian uppercase font-heading mb-8 tracking-tight">What You Will Master</h3>
+              <div className="grid sm:grid-cols-2 gap-6 mb-12">
+                {course.curriculum.map((item, i) => (
+                  <div key={i} className="flex gap-4 p-6 bg-white rounded-3xl border border-slate-100 shadow-sm group hover:border-accent transition-all">
+                    <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 group-hover:scale-110 transition-transform" />
+                    <span className="text-slate-700 font-bold">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-4">
+            <div className="sticky top-32">
+              <div className="bg-prussian rounded-[3rem] p-10 text-white shadow-2xl relative overflow-hidden">
+                <div className="relative z-10">
+                  <div className="text-[10px] font-black uppercase tracking-[0.3em] text-accent-light mb-6">Investment</div>
+                  <div className="text-5xl font-black font-heading mb-8 uppercase tracking-tighter">{course.price}</div>
+                  
+                  <div className="space-y-6 mb-10">
+                    {[
+                      "Career Placement Support",
+                      "Industry Certification",
+                      "Live Mentorship Sessions",
+                      "Lifetime Alumni Access"
+                    ].map((feature, i) => (
+                      <div key={i} className="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                        <ShieldCheck className="w-5 h-5 text-accent-light flex-shrink-0" />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  <Link 
+                    to="/contact" 
+                    className="block w-full bg-white text-prussian py-6 rounded-2xl font-black uppercase tracking-widest text-center hover:bg-accent hover:text-white transition-all shadow-xl"
+                  >
+                    Apply Now
+                  </Link>
+                  <p className="text-center text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-6">Limited Seats Per Cohort</p>
+                </div>
+                <div className="absolute top-0 right-0 w-40 h-40 bg-accent rounded-full blur-[80px] opacity-20"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </motion.div>

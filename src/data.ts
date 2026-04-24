@@ -1,4 +1,4 @@
-import { Shield, Code, Search, Lock, Eye, Zap } from "lucide-react";
+import { Shield, Code, Search, Lock, Eye, Zap, Rocket, Terminal, BrainCircuit } from "lucide-react";
 import React from "react";
 
 export interface Service {
@@ -98,27 +98,6 @@ export const services: Service[] = [
     image: "/placeholder.jpg"
   },
   {
-    id: "security-monitoring",
-    icon: React.createElement(Eye, { className: "w-8 h-8" }),
-    title: "Security Monitoring",
-    description: "24/7 monitoring and threat detection services to keep your systems protected.",
-    longDescription: "Round-the-clock protection for your digital environment. Our security monitoring services provide real-time threat detection and intelligence to stop attacks in their tracks.",
-    features: [
-      "Real-time Monitoring",
-      "Threat Intelligence",
-      "Log Analysis & Management",
-      "Managed Detection & Response (MDR)",
-      "Continuous Compliance Monitoring"
-    ],
-    benefits: [
-      "24/7 peace of mind",
-      "Early detection of security incidents",
-      "Reduced impact of potential attacks",
-      "Detailed security reporting"
-    ],
-    image: "/placeholder.jpg"
-  },
-  {
     id: "blockchain-web3",
     icon: React.createElement(Zap, { className: "w-8 h-8" }),
     title: "Blockchain & Web3 Development",
@@ -141,177 +120,92 @@ export const services: Service[] = [
   }
 ];
 
+export interface Track {
+  id: string;
+  name: string;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  courses: Course[];
+}
+
 export interface Course {
   id: string;
   title: string;
-  instructor: string;
   duration: string;
-  students: string;
-  rating: number;
-  price: string;
-  image: string;
-  category: string;
   level: string;
-  longDescription: string;
-  curriculum: string[];
+  description: string;
   outcomes: string[];
 }
 
-export const courses: Course[] = [
+export const tracks: Track[] = [
   {
-    id: "cybersecurity-fundamentals",
-    title: "Cybersecurity Fundamentals",
-    instructor: "Rienne Expert",
-    duration: "12 weeks",
-    students: "250+",
-    rating: 4.9,
-    price: "₦200k",
-    image: "/cybersecurity-animation.jpg",
-    category: "Cybersecurity",
-    level: "Beginner",
-    longDescription: "Master the fundamentals of Cybersecurity from scratch. This course covers the core concepts of information security, network security, and common threat vectors.",
-    curriculum: [
-      "Introduction to Information Security",
-      "Network Fundamentals & Security",
-      "Operating System Security",
-      "Common Attacks & Mitigation",
-      "Security Best Practices"
-    ],
-    outcomes: [
-      "Understand core cybersecurity principles",
-      "Identify and mitigate common security threats",
-      "Secure networks and operating systems",
-      "Prepare for entry-level security roles"
+    id: "ai-cloud",
+    name: "AI & Cloud Security Track",
+    description: "Master the intersection of artificial intelligence and cloud infrastructure security. Build the resilient systems of tomorrow.",
+    icon: React.createElement(BrainCircuit, { className: "w-6 h-6" }),
+    color: "bg-indigo-600 text-white",
+    courses: [
+      {
+        id: "cyber-fundamentals",
+        title: "Cybersecurity Foundations",
+        duration: "12 Weeks",
+        level: "Beginner",
+        description: "The essential starting point for your security career. Learn to identify and mitigate threats in modern networks.",
+        outcomes: ["Network Defense", "Threat Modeling", "Risk Management"]
+      },
+      {
+        id: "soc-analyst",
+        title: "SOC Analyst Mastery",
+        duration: "14 Weeks",
+        level: "Advanced",
+        description: "Operate at the frontline of defense. Master SIEM tools, threat hunting, and incident response in simulated environments.",
+        outcomes: ["Log Analysis", "Incident Response", "Threat Hunting"]
+      }
     ]
   },
   {
-    id: "advanced-pentesting",
-    title: "Advanced Penetration Testing",
-    instructor: "Rienne Expert",
-    duration: "10 weeks",
-    students: "120+",
-    rating: 5.0,
-    price: "₦250k",
-    image: "/ethical-hacking.jpg",
-    category: "Pentesting",
-    level: "Advanced",
-    longDescription: "Deep dive into advanced penetration testing techniques and real-world scenarios. Learn how to conduct professional-grade security assessments.",
-    curriculum: [
-      "Advanced Reconnaissance & OSINT",
-      "Web Application Hacking",
-      "Active Directory Attacks",
-      "Exploit Development Basics",
-      "Professional Report Writing"
-    ],
-    outcomes: [
-      "Conduct comprehensive security assessments",
-      "Master advanced hacking tools and techniques",
-      "Identify complex vulnerabilities",
-      "Write professional penetration test reports"
+    id: "software-engineering",
+    name: "Software Engineering Track",
+    description: "Become a world-class engineer. Learn to architect, build, and deploy scalable applications that solve real African challenges.",
+    icon: React.createElement(Terminal, { className: "w-6 h-6" }),
+    color: "bg-slate-900 text-white",
+    courses: [
+      {
+        id: "fullstack-dev",
+        title: "Full-Stack Web Engineering",
+        duration: "16 Weeks",
+        level: "Intermediate",
+        description: "From database to frontend, master the complete application lifecycle using modern JavaScript, React, and Node.js.",
+        outcomes: ["React & Node.js", "API Design", "Database Architecture"]
+      },
+      {
+        id: "web3-dev",
+        title: "Web3 & Blockchain Dev",
+        duration: "10 Weeks",
+        level: "Intermediate",
+        description: "Build the decentralized web. Learn smart contract development and DApp integration with a focus on security.",
+        outcomes: ["Solidity", "Smart Contracts", "DApp Architecture"]
+      }
     ]
   },
   {
-    id: "frontend-mastery",
-    title: "React & Frontend Mastery",
-    instructor: "Rienne Expert",
-    duration: "8 weeks",
-    students: "300+",
-    rating: 4.8,
-    price: "₦200k",
-    image: "/software-development.jpg",
-    category: "Frontend",
-    level: "Intermediate",
-    longDescription: "Build modern, interactive web applications with React and cutting-edge tools. Master the latest frontend technologies and best practices.",
-    curriculum: [
-      "Modern JavaScript (ES6+)",
-      "React Core Concepts & Hooks",
-      "State Management (Context/Redux)",
-      "Responsive Design with Tailwind CSS",
-      "Frontend Performance Optimization"
-    ],
-    outcomes: [
-      "Build complex React applications",
-      "Master modern frontend state management",
-      "Create responsive and performant UIs",
-      "Ready for professional frontend roles"
-    ]
-  },
-  {
-    id: "fullstack-dev",
-    title: "Full Stack Web Development",
-    instructor: "Rienne Expert",
-    duration: "16 weeks",
-    students: "180+",
-    rating: 4.9,
-    price: "₦300k",
-    image: "/software-development.jpg",
-    category: "Fullstack",
-    level: "Intermediate",
-    longDescription: "Complete full stack development from frontend to backend and deployment. Learn how to build and scale complete web applications.",
-    curriculum: [
-      "Advanced Frontend with React",
-      "Backend Development with Node.js",
-      "Database Design & Management",
-      "API Design & Documentation",
-      "Deployment & Cloud Services"
-    ],
-    outcomes: [
-      "Build and deploy full-stack applications",
-      "Understand end-to-end web architecture",
-      "Master both SQL and NoSQL databases",
-      "Lead web development projects"
-    ]
-  },
-  {
-    id: "web3-development",
-    title: "Blockchain & Web3 Development",
-    instructor: "Rienne Expert",
-    duration: "10 weeks",
-    students: "95+",
-    rating: 4.7,
-    price: "₦350k",
-    image: "/web3-blockchain.jpg",
-    category: "Web3",
-    level: "Intermediate",
-    longDescription: "Learn smart contract development, DApps, and blockchain security fundamentals. Enter the future of the decentralized web.",
-    curriculum: [
-      "Blockchain Fundamentals",
-      "Solidity Smart Contract Development",
-      "DApp Frontend Integration (ethers.js)",
-      "Web3 Security & Auditing",
-      "Token Standards (ERC-20, ERC-721)"
-    ],
-    outcomes: [
-      "Develop and deploy smart contracts",
-      "Build decentralized applications",
-      "Understand blockchain security risks",
-      "Contribute to Web3 projects"
-    ]
-  },
-  {
-    id: "soc-analyst",
-    title: "SOC Analyst Bootcamp",
-    instructor: "Rienne Expert",
-    duration: "12 weeks",
-    students: "65+",
-    rating: 4.9,
-    price: "₦350k",
-    image: "/cybersecurity-animation.jpg",
-    category: "Security",
-    level: "Advanced",
-    longDescription: "Master Security Operations Center (SOC) tools, threat detection, and incident response. Prepare for a career in security operations.",
-    curriculum: [
-      "SIEM Tools & Log Analysis",
-      "Threat Hunting & Detection",
-      "Incident Response Lifecycle",
-      "Network Traffic Analysis",
-      "Security Orchestration (SOAR)"
-    ],
-    outcomes: [
-      "Work in a professional SOC environment",
-      "Detect and respond to security incidents",
-      "Master industry-standard security tools",
-      "Understand security operations workflows"
+    id: "leadership",
+    name: "Leadership & Foundations",
+    description: "Every technical skill needs a foundation of leadership. Master the soft skills required to lead tech teams and drive innovation.",
+    icon: React.createElement(Rocket, { className: "w-6 h-6" }),
+    color: "bg-indigo-100 text-indigo-900",
+    courses: [
+      {
+        id: "tech-leadership",
+        title: "Tech Leadership Program",
+        duration: "8 Weeks",
+        level: "All Levels",
+        description: "Develop the mindset of a tech leader. Focus on communication, agile methodologies, and strategic problem-solving.",
+        outcomes: ["Agile Management", "Strategic Communication", "Team Building"]
+      }
     ]
   }
 ];
+
+export const courses = tracks.flatMap(t => t.courses.map(c => ({...c, category: t.name, image: "/software-development.jpg", price: "Apply Now", students: "500+", rating: 4.9, instructor: "Rienne Expert", longDescription: c.description, curriculum: c.outcomes })));
