@@ -1,9 +1,24 @@
 import { motion } from "motion/react";
-import { ArrowRight, Shield, CheckCircle2, Zap, GraduationCap, Briefcase, ExternalLink, Search, Code, Lock, Globe } from "lucide-react";
+import { ArrowRight, Shield, CheckCircle2, Zap, GraduationCap, Briefcase, ExternalLink, Search, Code, Lock, Globe, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { tracks, services } from "../data";
 
 export default function Home() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -11,190 +26,232 @@ export default function Home() {
       exit={{ opacity: 0 }}
       className="bg-mesh min-h-screen"
     >
-      {/* Clean, Professional Hero */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      {/* Dynamic Hero Section */}
+      <section className="relative pt-40 pb-24 lg:pt-56 lg:pb-40 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-accent text-sm font-semibold mb-8"
+                variants={fadeInUp}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50/80 text-accent text-sm font-bold mb-8 backdrop-blur-sm border border-indigo-100/50"
               >
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-                Premium Tech Services & Elite Academy
+                Digital Mastery & Enterprise Security
               </motion.div>
               
               <motion.h1 
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "circOut" }}
-                className="text-5xl sm:text-6xl lg:text-7xl font-bold text-prussian leading-[1.05] mb-8 tracking-tight font-heading"
+                variants={fadeInUp}
+                className="text-5xl sm:text-6xl lg:text-8xl font-black text-prussian leading-[0.95] mb-8 tracking-tighter font-heading uppercase"
               >
                 Secure. Build. <br/> <span className="text-gradient">Transform.</span>
               </motion.h1>
               
               <motion.p 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="text-xl text-slate-600 mb-10 max-w-xl leading-relaxed"
+                variants={fadeInUp}
+                className="text-xl text-slate-600 mb-12 max-w-xl leading-relaxed font-medium"
               >
-                We deliver mission-critical <span className="font-semibold text-prussian">Software Engineering</span> and <span className="font-semibold text-prussian">Cybersecurity Services</span> to global enterprises, while cultivating the next generation of tech leaders through our elite Academy.
+                The dual-force for the digital age. Delivering elite <span className="text-prussian font-bold">Cybersecurity Services</span> for enterprises and world-class <span className="text-accent font-bold">Technical Training</span> for the next generation.
               </motion.p>
               
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4"
+                variants={fadeInUp}
+                className="flex flex-col sm:flex-row gap-5"
               >
-                <Link to="/contact" className="bg-prussian text-white px-8 py-4 rounded-full font-semibold hover:bg-prussian-light transition-all flex items-center justify-center gap-2 shadow-lg shadow-prussian/20">
-                  Hire Our Firm <ArrowRight className="w-5 h-5" />
+                <Link to="/contact" className="bg-prussian text-white px-10 py-5 rounded-2xl font-bold hover:bg-accent transition-all flex items-center justify-center gap-2 shadow-xl shadow-prussian/20 group">
+                  Initiate Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/courses" className="bg-white text-prussian px-8 py-4 rounded-full font-semibold hover:bg-slate-50 transition-all text-center border border-slate-200 shadow-sm">
-                  Join the Academy
+                <Link to="/courses" className="bg-white/80 backdrop-blur-md text-prussian px-10 py-5 rounded-2xl font-bold hover:bg-white transition-all text-center border border-slate-200 shadow-sm">
+                  Join The Academy
                 </Link>
               </motion.div>
-            </div>
+            </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
+              initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "circOut" }}
               className="relative hidden lg:block"
             >
-               <div className="aspect-[4/3] rounded-[2rem] overflow-hidden relative shadow-2xl">
-                  <img src="/ethical-hacking.jpg" className="w-full h-full object-cover" alt="Professional Tech Team" />
-                  <div className="absolute inset-0 bg-prussian/10 mix-blend-multiply"></div>
+               <div className="aspect-[4/3] rounded-[3rem] overflow-hidden relative shadow-2xl group">
+                  <img src="/ethical-hacking.jpg" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Cybersecurity Expert" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-prussian/80 via-prussian/20 to-transparent"></div>
                   
-                  {/* Floating Stats Card */}
-                  <div className="absolute bottom-8 left-8 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-xl max-w-xs">
-                     <div className="flex items-center gap-4 mb-3">
-                        <div className="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center">
-                           <Shield className="w-6 h-6 text-accent" />
-                        </div>
-                        <div>
-                           <p className="text-sm font-bold text-slate-900">Enterprise Security</p>
-                           <p className="text-xs text-slate-500">ISO 27001 Certified</p>
-                        </div>
-                     </div>
+                  <div className="absolute bottom-10 left-10 right-10">
+                    <div className="glass-card p-8 rounded-3xl">
+                       <div className="flex items-center gap-4 mb-4">
+                          <div className="w-12 h-12 bg-accent rounded-2xl flex items-center justify-center text-white">
+                             <Shield className="w-6 h-6" />
+                          </div>
+                          <p className="font-black text-prussian uppercase font-heading text-lg">System Audit: ACTIVE</p>
+                       </div>
+                       <p className="text-slate-600 font-medium text-sm">Real-time enterprise vulnerability scanning and threat mitigation in progress.</p>
+                    </div>
                   </div>
                </div>
+               {/* Decorative Glows */}
+               <div className="glow-indigo -top-20 -right-20"></div>
+               <div className="glow-indigo -bottom-20 -left-20"></div>
             </motion.div>
           </div>
         </div>
-        
-        {/* Soft Background Gradients */}
-        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-indigo-50/50 rounded-full blur-[100px] -z-10"></div>
-        <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-slate-100/50 rounded-full blur-[100px] -z-10"></div>
       </section>
 
-      {/* Professional Services Section (Balanced Focus) */}
-      <section className="py-24 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div className="max-w-2xl">
-              <h2 className="text-accent font-semibold tracking-wider uppercase text-sm mb-4">Corporate Solutions</h2>
-              <h3 className="text-3xl sm:text-4xl font-bold text-prussian font-heading leading-tight">Expert Engineering & Security Consulting.</h3>
+      {/* Corporate Services (Dark Impact Section) */}
+      <section className="py-24 lg:py-40 bg-prussian text-white rounded-[4rem] mx-4 sm:mx-8 shadow-2xl relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="grid lg:grid-cols-2 gap-20 items-center mb-24"
+          >
+            <div>
+              <motion.h2 variants={fadeInUp} className="text-sm font-bold text-accent-light uppercase tracking-[0.4em] mb-6 font-heading">Enterprise Solutions</motion.h2>
+              <motion.h3 variants={fadeInUp} className="text-4xl sm:text-6xl font-black leading-tight tracking-tighter uppercase font-heading">Architecting Secure <br/> Digital Fortresses.</motion.h3>
             </div>
-            <Link to="/services" className="flex items-center gap-2 text-accent font-semibold hover:text-prussian transition-colors whitespace-nowrap">
-              View All Services <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+            <motion.p variants={fadeInUp} className="text-xl text-slate-300 font-medium leading-relaxed max-w-xl">
+              We deploy elite engineering squads to solve complex technical challenges. From deep-dive security audits to decentralised protocol design, we build for absolute technical integrity.
+            </motion.p>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Penetration Testing", desc: "Rigorous vulnerability assessments to secure your infrastructure against modern threats.", icon: <Search className="w-6 h-6" />, link: "/services/penetration-testing" },
-              { title: "Web3 Architecture", desc: "Secure smart contract development and scalable decentralized application design.", icon: <Zap className="w-6 h-6" />, link: "/services/blockchain-web3" },
-              { title: "Software Development", desc: "High-performance, secure web applications built for enterprise scale and reliability.", icon: <Code className="w-6 h-6" />, link: "/services/web-development" }
+              { title: "Offensive Security", desc: "Rigorous vulnerability assessments and ethical hacking to secure your infrastructure.", icon: <Search className="w-8 h-8" />, img: "/cybersecurity-animation.jpg" },
+              { title: "Protocol Design", desc: "Secure smart contract development and decentralized application architecture.", icon: <Zap className="w-8 h-8" />, img: "/web3-blockchain.jpg" },
+              { title: "Enterprise Dev", desc: "High-performance, secure web applications built for global scale and reliability.", icon: <Code className="w-8 h-8" />, img: "/software-development.jpg" }
             ].map((service, i) => (
-              <Link key={i} to={service.link} className="group p-8 bg-slate-50 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-slate-100">
-                <div className="w-14 h-14 bg-white text-prussian rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:bg-accent group-hover:text-white transition-colors">
-                  {service.icon}
-                </div>
-                <h4 className="text-xl font-bold text-prussian mb-3 font-heading">{service.title}</h4>
-                <p className="text-slate-600 leading-relaxed mb-6">{service.desc}</p>
-                <span className="text-sm font-semibold text-accent group-hover:text-prussian transition-colors flex items-center gap-1">
-                  Learn more <ChevronRight className="w-4 h-4" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Academy Section (Balanced Focus) */}
-      <section className="py-24 lg:py-32 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-accent font-semibold tracking-wider uppercase text-sm mb-4">Technical Academy</h2>
-            <h3 className="text-3xl sm:text-4xl font-bold text-prussian font-heading leading-tight mb-6">Accelerate Your Digital Career.</h3>
-            <p className="text-lg text-slate-600">Our programs are designed by industry experts to transform raw talent into high-impact digital leaders. Learn the exact skills we use to serve our enterprise clients.</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {tracks.map((track) => (
-              <div 
-                key={track.id}
-                className="flex flex-col p-8 bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100 relative group"
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="group relative h-[400px] rounded-[2.5rem] overflow-hidden border border-white/10"
               >
-                <div className="w-14 h-14 bg-indigo-50 text-accent rounded-xl flex items-center justify-center mb-6">
-                   {track.icon}
+                <img src={service.img} className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" alt={service.title} />
+                <div className="absolute inset-0 bg-gradient-to-t from-prussian via-prussian/40 to-transparent"></div>
+                
+                <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                  <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    {service.icon}
+                  </div>
+                  <h4 className="text-2xl font-black font-heading mb-4 uppercase">{service.title}</h4>
+                  <p className="text-slate-300 font-medium text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {service.desc}
+                  </p>
+                  <Link to="/services" className="inline-flex items-center gap-2 text-accent-light font-bold text-xs uppercase tracking-widest">
+                    Analyze Solution <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
-                <h4 className="text-2xl font-bold text-prussian mb-4 font-heading">{track.name}</h4>
-                <p className="text-slate-600 mb-8 flex-grow">
-                  {track.description}
-                </p>
-                <Link to="/courses" className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-slate-50 text-prussian font-semibold group-hover:bg-prussian group-hover:text-white transition-colors">
-                  View Programs
-                </Link>
-              </div>
+              </motion.div>
             ))}
+          </div>
+        </div>
+        {/* Background Visual Element */}
+        <div className="absolute top-0 right-0 w-[60rem] h-[60rem] bg-accent/10 rounded-full blur-[160px] pointer-events-none"></div>
+      </section>
+
+      {/* Academy Section (White Texture) */}
+      <section className="py-32 lg:py-48 bg-white/50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-24 items-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+               <div className="aspect-square rounded-[4rem] overflow-hidden shadow-2xl relative">
+                  <img src="/software-development.jpg" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" alt="Students" />
+                  <div className="absolute inset-0 bg-accent/20 mix-blend-overlay"></div>
+               </div>
+               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-accent/5 rounded-full blur-[80px]"></div>
+            </motion.div>
+            
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={staggerContainer}
+            >
+              <motion.h2 variants={fadeInUp} className="text-sm font-bold text-accent uppercase tracking-[0.4em] mb-6 font-heading">Technical Academy</motion.h2>
+              <motion.h3 variants={fadeInUp} className="text-4xl sm:text-6xl font-black text-prussian uppercase font-heading leading-tight tracking-tighter mb-8">Forging The Next <br/> Tech Pioneers.</motion.h3>
+              <motion.p variants={fadeInUp} className="text-xl text-slate-600 font-medium leading-relaxed mb-12">
+                Our programs are built on the same core engineering and security principles we use for our enterprise clients. We don't just teach; we prepare you for global impact.
+              </motion.p>
+              
+              <div className="grid sm:grid-cols-2 gap-8 mb-12">
+                {tracks.map((track, i) => (
+                  <motion.div key={i} variants={fadeInUp} className="flex gap-4 p-6 glass-card rounded-3xl group hover:bg-white transition-colors">
+                    <div className="w-12 h-12 bg-prussian/5 rounded-2xl flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all">
+                      {track.icon}
+                    </div>
+                    <div>
+                      <h4 className="font-black text-prussian uppercase text-sm mb-1 font-heading">{track.name}</h4>
+                      <Link to="/courses" className="text-xs font-bold text-slate-400 group-hover:text-accent flex items-center gap-1 transition-colors">
+                        Apply Now <ChevronRight className="w-3 h-3" />
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Trust & Stats */}
-      <section className="py-20 bg-prussian text-white">
+      {/* Impact Counters (Animated) */}
+      <section className="py-24 border-y border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto px-6">
            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
               {[
-                { val: "10,000+", label: "Professionals Trained", icon: <GraduationCap className="w-6 h-6 text-accent-light" /> },
-                { val: "99%", label: "Project Success Rate", icon: <CheckCircle2 className="w-6 h-6 text-accent-light" /> },
-                { val: "24/7", label: "Security Monitoring", icon: <Shield className="w-6 h-6 text-accent-light" /> },
-                { val: "50+", label: "Enterprise Partners", icon: <Globe className="w-6 h-6 text-accent-light" /> }
+                { val: "10K+", label: "Youth Trained", icon: <GraduationCap className="w-6 h-6 text-accent" /> },
+                { val: "99%", label: "Success Rate", icon: <CheckCircle2 className="w-6 h-6 text-accent" /> },
+                { val: "24/7", label: "Threat Response", icon: <Shield className="w-6 h-6 text-accent" /> },
+                { val: "50+", label: "Hiring Partners", icon: <Briefcase className="w-6 h-6 text-accent" /> }
               ].map((stat, i) => (
-                <div key={i} className="text-center">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="text-center"
+                >
                   <div className="flex justify-center mb-4">{stat.icon}</div>
-                  <p className="text-4xl font-bold mb-2 font-heading">{stat.val}</p>
-                  <p className="text-sm text-slate-400 font-medium">{stat.label}</p>
-                </div>
+                  <p className="text-5xl font-black text-prussian mb-2 tracking-tighter font-heading">{stat.val}</p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-[0.2em]">{stat.label}</p>
+                </motion.div>
               ))}
            </div>
         </div>
       </section>
 
-      {/* Clean CTA */}
-      <section className="py-24 lg:py-32 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-           <h2 className="text-4xl sm:text-5xl font-bold text-prussian mb-6 font-heading tracking-tight">Ready to elevate your digital capabilities?</h2>
-           <p className="text-xl text-slate-600 mb-10">Whether you need an elite engineering team to secure your infrastructure, or you're ready to master the skills yourself.</p>
-           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="bg-prussian text-white px-8 py-4 rounded-full font-semibold hover:bg-prussian-light transition-all shadow-lg">
-                Request a Consultation
-              </Link>
-              <Link to="/courses" className="bg-indigo-50 text-accent px-8 py-4 rounded-full font-semibold hover:bg-indigo-100 transition-all">
-                Explore the Academy
-              </Link>
-           </div>
+      {/* Dynamic CTA */}
+      <section className="py-32 lg:py-48">
+        <div className="max-w-7xl mx-auto px-6">
+           <motion.div 
+             initial={{ opacity: 0, y: 50 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="bg-prussian rounded-[4rem] p-16 lg:p-32 text-center text-white relative overflow-hidden shadow-2xl"
+           >
+              <h2 className="text-4xl sm:text-7xl font-black mb-12 leading-tight tracking-tighter uppercase font-heading relative z-10">Deploy Your <br /> Future Today.</h2>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
+                 <Link to="/contact" className="bg-accent text-white px-12 py-6 rounded-2xl font-black text-xl hover:bg-accent-light transition-all shadow-2xl uppercase tracking-widest">Partner With Us</Link>
+                 <Link to="/courses" className="bg-white text-prussian px-12 py-6 rounded-2xl font-black text-xl hover:bg-slate-100 transition-all uppercase tracking-widest">Apply to Academy</Link>
+              </div>
+              <div className="absolute top-0 right-0 w-[60rem] h-[60rem] bg-accent rounded-full blur-[180px] opacity-20 animate-pulse"></div>
+           </motion.div>
         </div>
       </section>
     </motion.div>
   );
-}
-
-// Temporary internal component missing from lucide-react import in this specific file scope to avoid errors
-function ChevronRight(props: any) {
-  return <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="m9 18 6-6-6-6"/></svg>
 }
