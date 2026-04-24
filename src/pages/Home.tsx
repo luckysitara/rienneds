@@ -122,29 +122,25 @@ export default function Home() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: "Offensive Security", desc: "Rigorous vulnerability assessments and ethical hacking to secure your infrastructure.", icon: <Search className="w-8 h-8" />, img: "/cybersecurity-animation.jpg" },
-              { title: "Protocol Design", desc: "Secure smart contract development and decentralized application architecture.", icon: <Zap className="w-8 h-8" />, img: "/web3-blockchain.jpg" },
-              { title: "Enterprise Dev", desc: "High-performance, secure web applications built for global scale and reliability.", icon: <Code className="w-8 h-8" />, img: "/software-development.jpg" }
-            ].map((service, i) => (
+            {services.slice(0, 3).map((service, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.2 }}
-                className="group relative h-[400px] rounded-[2.5rem] overflow-hidden border border-white/10"
+                className="group relative h-[450px] rounded-[2.5rem] overflow-hidden border border-white/10"
               >
-                <img src={service.img} className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700" alt={service.title} />
+                <img src={service.image} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700" alt={service.title} />
                 <div className="absolute inset-0 bg-gradient-to-t from-prussian via-prussian/40 to-transparent"></div>
                 
                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
                   <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     {service.icon}
                   </div>
-                  <h4 className="text-2xl font-black font-heading mb-4 uppercase">{service.title}</h4>
+                  <h4 className="text-2xl font-black font-heading mb-4 uppercase leading-tight">{service.title}</h4>
                   <p className="text-slate-300 font-medium text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {service.desc}
+                    {service.description}
                   </p>
                   <Link to="/services" className="inline-flex items-center gap-2 text-accent-light font-bold text-xs uppercase tracking-widest">
                     Analyze Solution <ArrowRight className="w-4 h-4" />
@@ -152,6 +148,12 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </div>
+          
+          <div className="mt-20 text-center">
+            <Link to="/services" className="inline-flex items-center gap-3 text-white font-black uppercase tracking-widest text-sm hover:text-accent-light transition-colors group">
+              View All Capabilities <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Link>
           </div>
         </div>
         {/* Background Visual Element */}

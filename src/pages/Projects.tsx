@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowUpRight, Shield, Globe, Zap, Search } from "lucide-react";
+import { ArrowUpRight, Shield, Globe, Zap, Search, Code, CheckCircle2, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const projects = [
@@ -12,18 +12,18 @@ const projects = [
     description: "Securing a Pan-African payment gateway processing over $1M in daily transactions against sophisticated SQL injection and DDoS attacks.",
     impact: "Implemented a zero-trust architecture resulting in 0% downtime during peak 2024 Black Friday traffic and 100% compliance for ISO 27001 readiness.",
     tech: ["Red Teaming", "WAF Hardening", "Threat Intelligence"],
-    color: "indigo"
+    color: "prussian"
   },
   {
     id: "decentralized-governance",
     title: "Nexus DAO Governance",
     client: "Web3 Foundation",
     category: "Blockchain",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80",
+    image: "/web3-blockchain.jpg",
     description: "Engineering a privacy-preserving decentralized voting system for a global DAO with 50,000+ active members.",
     impact: "Deployed ZK-Proof based smart contracts that reduced gas fees by 40% while ensuring 100% voter anonymity and auditability.",
     tech: ["Solidity", "ZK-Proofs", "Hardhat"],
-    color: "blue"
+    color: "accent"
   },
   {
     id: "enterprise-academy-portal",
@@ -39,109 +39,146 @@ const projects = [
 ];
 
 export default function Projects() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="pt-32 pb-24 bg-mesh"
+      className="pt-40 pb-24 bg-mesh min-h-screen"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-[0.2em] mb-6 border border-indigo-100"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-accent text-[10px] font-black uppercase tracking-[0.3em] mb-8 border border-indigo-100/50"
           >
-            Proven Track Record
+            Verified Impact
           </motion.div>
-          <h1 className="text-5xl sm:text-7xl font-extrabold text-slate-900 mb-8 tracking-tighter leading-[0.9]">Impact Stories.</h1>
+          <h1 className="text-5xl sm:text-8xl font-black text-prussian mb-8 tracking-tighter leading-[0.85] font-heading uppercase">
+            Transformation <br /> in Action.
+          </h1>
           <p className="text-xl text-slate-600 font-medium leading-relaxed">
-            We solve mission-critical technical challenges where security, scale, and precision are non-negotiable.
+            Explore the high-stakes engineering projects and talent success stories that define our mission.
           </p>
         </div>
 
-        <div className="grid gap-12">
+        <div className="grid gap-20">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative grid lg:grid-cols-2 gap-0 overflow-hidden rounded-[4rem] bg-white border border-slate-100 shadow-2xl shadow-slate-200/40"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="group relative grid lg:grid-cols-12 gap-0 overflow-hidden rounded-[4rem] bg-white border border-slate-100 shadow-2xl transition-all hover:shadow-indigo-100/50"
             >
-              <div className="overflow-hidden h-[400px] lg:h-auto relative">
+              <div className="lg:col-span-5 overflow-hidden h-[400px] lg:h-auto relative">
                 <img 
                   src={project.image} 
                   alt={project.title} 
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100 opacity-80" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none"></div>
-              </div>
-              <div className="p-10 lg:p-20 flex flex-col justify-center bg-white">
-                <div className="flex justify-between items-start mb-8">
-                  <div>
-                    <span className="text-xs font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-4 py-2 rounded-xl mb-6 inline-block">
+                <div className="absolute inset-0 bg-gradient-to-r from-prussian/20 to-transparent pointer-events-none"></div>
+                <div className="absolute top-10 left-10">
+                   <div className="px-6 py-2 bg-prussian/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
                       {project.category}
-                    </span>
-                    <h3 className="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tighter mb-2">{project.title}</h3>
-                    <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Client: {project.client}</p>
+                   </div>
+                </div>
+              </div>
+              
+              <div className="lg:col-span-7 p-10 lg:p-20 flex flex-col justify-center bg-white relative">
+                <motion.div variants={fadeInUp}>
+                  <div className="flex justify-between items-start mb-8">
+                    <div>
+                      <h3 className="text-4xl lg:text-5xl font-black text-prussian tracking-tighter mb-4 font-heading uppercase leading-none">{project.title}</h3>
+                      <p className="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">Client Protocol: {project.client}</p>
+                    </div>
+                    <div className="w-16 h-16 bg-slate-50 border border-slate-100 text-prussian rounded-full flex items-center justify-center group-hover:bg-accent group-hover:text-white transition-all duration-500 shadow-sm group-hover:shadow-xl group-hover:-translate-y-2">
+                      <ArrowUpRight className="w-8 h-8" />
+                    </div>
                   </div>
-                  <div className="w-16 h-16 bg-slate-900 text-white rounded-full flex items-center justify-center group-hover:bg-indigo-600 transition-all duration-500 shadow-xl group-hover:shadow-indigo-200">
-                    <ArrowUpRight className="w-8 h-8" />
+                  
+                  <p className="text-xl text-slate-600 mb-10 font-medium leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="bg-slate-50 p-10 rounded-[3rem] mb-12 border border-slate-100 relative overflow-hidden group/impact">
+                    <div className="relative z-10">
+                      <p className="text-[10px] font-black text-accent uppercase tracking-[0.3em] mb-4">Core Impact Delivered</p>
+                      <p className="text-prussian font-black text-2xl leading-tight font-heading uppercase">{project.impact}</p>
+                    </div>
+                    <Shield className="absolute -right-6 -bottom-6 w-32 h-32 text-prussian/5 -rotate-12 transition-transform duration-700 group-hover/impact:scale-125 group-hover/impact:rotate-0" />
                   </div>
-                </div>
-                
-                <p className="text-xl text-slate-600 mb-10 font-medium leading-relaxed">
-                  {project.description}
-                </p>
 
-                <div className="bg-indigo-50/50 p-8 rounded-[2rem] mb-10 border border-indigo-100/50 relative overflow-hidden">
-                  <p className="text-xs font-bold text-indigo-400 uppercase tracking-[0.2em] mb-3">Impact Delivered</p>
-                  <p className="text-indigo-950 font-extrabold text-xl leading-snug relative z-10">{project.impact}</p>
-                  <Shield className="absolute -right-4 -bottom-4 w-24 h-24 text-indigo-500/10 -rotate-12" />
-                </div>
-
-                <div className="flex flex-wrap gap-3">
-                  {project.tech.map(t => (
-                    <span key={t} className="text-xs font-bold text-slate-500 border border-slate-100 px-5 py-2.5 rounded-xl bg-slate-50">
-                      {t}
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex flex-wrap gap-3">
+                    {project.tech.map(t => (
+                      <span key={t} className="text-[10px] font-black text-slate-500 border border-slate-200 px-6 py-3 rounded-2xl bg-white uppercase tracking-widest group-hover:border-accent/30 transition-colors">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Impact Stats */}
-        <div className="mt-32 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Impact Stats Grid */}
+        <div className="mt-40 grid grid-cols-2 lg:grid-cols-4 gap-8">
            {[
-             { val: "$10M+", label: "Assets Secured" },
-             { val: "100k+", label: "Transactions Audited" },
-             { val: "0", label: "Critical Breaches" },
-             { val: "24/7", label: "Uptime Guaranteed" }
+             { val: "$10M+", label: "Assets Hardened", icon: <Shield className="w-5 h-5 text-accent" /> },
+             { val: "100k+", label: "Protocol Audits", icon: <Code className="w-5 h-5 text-accent" /> },
+             { val: "0", label: "Critical Failures", icon: <CheckCircle2 className="w-5 h-5 text-accent" /> },
+             { val: "24/7", label: "Incident Support", icon: <Globe className="w-5 h-5 text-accent" /> }
            ].map((stat, i) => (
-             <div key={i} className="text-center p-10 glass-card rounded-[3rem]">
-               <p className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-2 tracking-tighter">{stat.val}</p>
-               <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">{stat.label}</p>
-             </div>
+             <motion.div 
+               key={i} 
+               initial={{ opacity: 0, y: 20 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: i * 0.1 }}
+               className="text-center p-12 glass-card rounded-[3rem] group hover:bg-white transition-all"
+             >
+               <div className="flex justify-center mb-6 group-hover:scale-110 transition-transform">{stat.icon}</div>
+               <p className="text-5xl font-black text-prussian mb-3 tracking-tighter font-heading">{stat.val}</p>
+               <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{stat.label}</p>
+             </motion.div>
            ))}
         </div>
 
-        {/* Production CTA */}
-        <div className="mt-32">
-          <div className="bg-slate-950 rounded-[4rem] p-12 lg:p-32 text-center text-white relative overflow-hidden">
-            <h2 className="text-4xl sm:text-7xl font-extrabold mb-10 tracking-tighter leading-none relative z-10">Scale Your <br />Impact with Rienne.</h2>
-            <p className="text-slate-400 text-xl mb-12 max-w-2xl mx-auto font-medium relative z-10">
-              We are currently accepting new high-stakes projects and strategic partnerships for Q3 2025.
+        {/* Elite CTA */}
+        <div className="mt-40">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-prussian rounded-[4rem] p-16 lg:p-32 text-center text-white relative overflow-hidden shadow-2xl"
+          >
+            <h2 className="text-4xl sm:text-8xl font-black mb-12 tracking-tighter leading-none relative z-10 font-heading uppercase">Scale Your <br />Impact.</h2>
+            <p className="text-slate-400 text-xl mb-14 max-w-2xl mx-auto font-medium relative z-10 leading-relaxed">
+              We are currently selecting high-stakes projects and elite cohorts for strategic deployment in Q3 2025.
             </p>
-            <Link to="/contact" className="bg-white text-slate-950 px-12 py-6 rounded-2xl font-extrabold text-xl hover:bg-indigo-50 transition-all inline-block relative z-10">
-              Initiate Consultation
+            <Link to="/contact" className="bg-white text-prussian px-12 py-6 rounded-[2rem] font-black text-xl hover:bg-accent hover:text-white transition-all inline-flex items-center gap-4 relative z-10 uppercase tracking-widest active:scale-95 shadow-xl">
+              Initiate Consultation <ArrowRight className="w-6 h-6" />
             </Link>
-            <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-[100px]"></div>
-          </div>
+            <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-accent/10 rounded-full blur-[150px] animate-pulse"></div>
+          </motion.div>
         </div>
       </div>
     </motion.div>
