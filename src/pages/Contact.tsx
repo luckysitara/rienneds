@@ -93,7 +93,7 @@ export default function Contact() {
               </div>
               <h4 className="text-2xl font-black mb-2 text-prussian uppercase font-heading">Direct Channel</h4>
               <p className="text-slate-500 font-medium mb-6 text-sm">Mon - Fri | 9am - 6pm</p>
-              <p className="text-prussian font-black text-lg">+234 (0) 123 456 789</p>
+              <p className="text-prussian font-black text-lg">+2349053135852</p>
             </div>
 
             <div className="bg-slate-50 p-10 rounded-[3rem] border border-slate-200 shadow-sm flex flex-col items-center text-center">
