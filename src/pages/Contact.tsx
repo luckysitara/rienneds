@@ -21,15 +21,18 @@ export default function Contact() {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      console.error("EmailJS credentials not found in environment variables.");
+      console.error("EmailJS Error: Credentials missing. Ensure VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY are set in your .env file.");
       setLoading(false);
       setError(true);
       return;
     }
 
     if (formRef.current) {
+      // Initialize with public key
+      emailjs.init(publicKey);
+
       emailjs
-        .sendForm(serviceId, templateId, formRef.current, publicKey)
+        .sendForm(serviceId, templateId, formRef.current)
         .then(
           () => {
             setLoading(false);
