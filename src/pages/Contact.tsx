@@ -79,7 +79,7 @@ export default function Contact() {
               <h4 className="text-2xl font-black mb-2 uppercase font-heading">Digital Correspondence</h4>
               <p className="text-slate-400 font-medium mb-6 text-sm">Response within 24 hours</p>
               <div className="space-y-4">
-                <a href="mailto:hello@riennedigital.com" className="block text-accent-light font-black text-lg hover:underline transition-all">hello@riennedigital.com</a>
+                <a href="mailto:support@riennedigitalsolutions.com" className="block text-accent-light font-black text-lg hover:underline transition-all">support@riennedigitalsolutions.com</a>
                 <p className="text-slate-500 text-xs font-bold uppercase tracking-widest flex items-center gap-2">
                    <Globe className="w-4 h-4" /> Global Support Hub
                 </p>
@@ -136,11 +136,12 @@ export default function Contact() {
                   <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Subject of Interest</label>
                   <div className="relative">
                     <select 
-                      name="interest" 
+                      name="service_interest" 
                       required 
+                      defaultValue=""
                       className="w-full px-8 py-5 rounded-2xl bg-slate-50 border border-slate-100 focus:bg-white focus:border-accent focus:ring-4 focus:ring-indigo-100 outline-none transition-all font-black text-prussian appearance-none"
                     >
-                      <option value="" disabled selected>Select an option</option>
+                      <option value="" disabled>Select an option</option>
                       <optgroup label="Expert Services">
                         <option value="Security Audit">Penetration Testing & Security Audit</option>
                         <option value="Web3 Engineering">Web3 & Protocol Design</option>

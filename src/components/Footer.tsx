@@ -54,8 +54,8 @@ export default function Footer() {
             <div className="col-span-2 sm:col-span-1">
               <h4 className="text-sm font-bold font-heading text-white mb-4">Contact</h4>
               <div className="flex flex-col gap-3">
-                <p className="text-slate-400 text-sm font-medium">Lagos & Nairobi</p>
-                <p className="text-white text-sm font-bold">hello@riennedigital.com</p>
+                <p className="text-slate-400 text-sm font-medium">Lagos, Nigeria</p>
+                <p className="text-white text-sm font-bold">support@riennedigitalsolutions.com</p>
               </div>
             </div>
           </div>
