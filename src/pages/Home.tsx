@@ -248,7 +248,7 @@ export default function Home() {
               <h2 className="text-4xl sm:text-7xl font-black mb-12 leading-tight tracking-tighter uppercase font-heading relative z-10">Deploy Your <br /> Future Today.</h2>
               <div className="flex flex-col sm:flex-row gap-6 justify-center relative z-10">
                  <Link to="/contact" className="bg-accent text-white px-12 py-6 rounded-2xl font-black text-xl hover:bg-accent-light transition-all shadow-2xl uppercase tracking-widest">Partner With Us</Link>
-                 <Link to="/courses" className="bg-white text-prussian px-12 py-6 rounded-2xl font-black text-xl hover:bg-slate-100 transition-all uppercase tracking-widest">Apply to Academy</Link>
+                 <Link to="/nysc" className="bg-white text-prussian px-12 py-6 rounded-2xl font-black text-xl hover:bg-slate-100 transition-all uppercase tracking-widest">Apply as NYSC Member</Link>
               </div>
               <div className="absolute top-0 right-0 w-[60rem] h-[60rem] bg-accent rounded-full blur-[180px] opacity-20 animate-pulse"></div>
            </motion.div>

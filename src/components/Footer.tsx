@@ -46,7 +46,7 @@ export default function Footer() {
               <ul className="space-y-3 text-slate-400 font-medium text-sm">
                 <li><Link to="/courses" className="hover:text-white transition-colors">AI & Cloud Track</Link></li>
                 <li><Link to="/courses" className="hover:text-white transition-colors">Software Engineering</Link></li>
-                <li><Link to="/courses" className="hover:text-white transition-colors">Leadership Programs</Link></li>
+                <li><Link to="/nysc" className="text-accent-light hover:text-white transition-colors font-bold flex items-center gap-1.5">NYSC Tech Cohort</Link></li>
                 <li><Link to="/about" className="hover:text-white transition-colors">Our Mission</Link></li>
               </ul>
             </div>

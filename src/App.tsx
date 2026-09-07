@@ -17,6 +17,7 @@ import ServiceDetail from "./pages/ServiceDetail";
 import CourseDetail from "./pages/CourseDetail";
 
 import Projects from "./pages/Projects";
+import NyscAcademy from "./pages/NyscAcademy";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -44,6 +45,7 @@ export default function App() {
               <Route path="/courses" element={<Courses />} />
               <Route path="/courses/:id" element={<CourseDetail />} />
               <Route path="/projects" element={<Projects />} />
+              <Route path="/nysc" element={<NyscAcademy />} />
             </Routes>
           </AnimatePresence>
         </main>
