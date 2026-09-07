@@ -314,7 +314,7 @@ export default function NyscAcademy() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-accent-light transition-all shadow-2xl uppercase tracking-wider group"
             >
-              Apply via Google Form
+              Apply to Any Course Track
               <ExternalLink className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
             <a
