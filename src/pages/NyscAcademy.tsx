@@ -593,7 +593,7 @@ export default function NyscAcademy() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-accent text-white px-12 py-6 rounded-2xl font-black text-xl hover:bg-accent-light transition-all shadow-2xl uppercase tracking-widest group"
               >
-                Apply as NYSC Member
+                APPLY TO NYSC COHORT
                 <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </a>
             </div>

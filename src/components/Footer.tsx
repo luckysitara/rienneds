@@ -1,7 +1,38 @@
-import { Instagram, ArrowRight, Shield, Globe, Lock, Linkedin, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 
+function TikTokIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.32 0 .62.05.9.14V9.45a6.34 6.34 0 0 0-.9-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.28 8.28 0 0 0 4.84 1.56V6.86a4.87 4.87 0 0 1-1.08-.17z" />
+    </svg>
+  );
+}
+
 export default function Footer() {
+  const socialLinks = [
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/riennedigitalsolutions?stkn=MTM1ZjYxajFiN2V5bA%3D%3D&utm_source=qr",
+      icon: <Instagram className="w-5 h-5" />
+    },
+    {
+      name: "TikTok",
+      href: "https://www.tiktok.com/@riennedigitalsolu?_r=1&_t=ZS-99aeOi95LiZ",
+      icon: <TikTokIcon className="w-5 h-5" />
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/company/rienne-digital-solutions/",
+      icon: <Linkedin className="w-5 h-5" />
+    },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/share/19mSuAuXCP/?mibextid=wwXIfr",
+      icon: <Facebook className="w-5 h-5" />
+    }
+  ];
+
   return (
     <footer className="bg-prussian text-white pt-16 pb-10 font-sans">
       <div className="max-w-7xl mx-auto px-6">
@@ -17,16 +48,19 @@ export default function Footer() {
             <p className="text-slate-300 text-lg leading-relaxed mb-6">
               Delivering premium digital services for global enterprises while training the next generation of African tech excellence.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors text-white">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors text-white">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="https://instagram.com/riennedigitalsolutions" target="_blank" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors text-white">
-                <Instagram className="w-5 h-5" />
-              </a>
+            <div className="flex gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-all text-white"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
@@ -55,7 +89,18 @@ export default function Footer() {
               <h4 className="text-sm font-bold font-heading text-white mb-4">Contact</h4>
               <div className="flex flex-col gap-3">
                 <p className="text-slate-400 text-sm font-medium">Lagos, Nigeria</p>
-                <p className="text-white text-sm font-bold">support@riennedigitalsolutions.com</p>
+                <a 
+                  href="tel:+2348144599122" 
+                  className="text-white hover:text-accent-light text-sm font-bold transition-colors inline-block"
+                >
+                  +234 814 459 9122
+                </a>
+                <a 
+                  href="mailto:support@riennedigitalsolutions.com" 
+                  className="text-slate-300 hover:text-white text-sm font-medium transition-colors inline-block"
+                >
+                  support@riennedigitalsolutions.com
+                </a>
               </div>
             </div>
           </div>

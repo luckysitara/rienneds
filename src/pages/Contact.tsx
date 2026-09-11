@@ -1,7 +1,15 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin, Send, ShieldCheck, CheckCircle2, MessageCircle, Globe, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Send, ShieldCheck, CheckCircle2, MessageCircle, Globe, ArrowRight, Instagram, Linkedin, Facebook } from "lucide-react";
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+
+function TikTokIcon({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.32 0 .62.05.9.14V9.45a6.34 6.34 0 0 0-.9-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.28 8.28 0 0 0 4.84 1.56V6.86a4.87 4.87 0 0 1-1.08-.17z" />
+    </svg>
+  );
+}
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -96,7 +104,12 @@ export default function Contact() {
               </div>
               <h4 className="text-2xl font-black mb-2 text-prussian uppercase font-heading">Direct Channel</h4>
               <p className="text-slate-500 font-medium mb-6 text-sm">Mon - Fri | 9am - 6pm</p>
-              <p className="text-prussian font-black text-lg">+2349053135852</p>
+              <a 
+                href="tel:+2348144599122" 
+                className="text-prussian hover:text-accent font-black text-lg transition-colors block"
+              >
+                +234 814 459 9122
+              </a>
             </div>
 
             <div className="bg-slate-50 p-10 rounded-[3rem] border border-slate-200 shadow-sm flex flex-col items-center text-center">
@@ -104,7 +117,24 @@ export default function Contact() {
                 {[1,2,3].map(i => <img key={i} src={`https://i.pravatar.cc/100?img=${i+10}`} className="w-12 h-12 rounded-full border-4 border-white shadow-lg" alt="Advisor" />)}
               </div>
               <p className="text-sm font-bold text-prussian uppercase tracking-widest mb-2 font-heading">Talk to an Advisor</p>
-              <p className="text-xs text-slate-500 font-medium">Get guidance on choosing the right track or service for your needs.</p>
+              <p className="text-xs text-slate-500 font-medium mb-6">Get guidance on choosing the right track or service for your needs.</p>
+              <div className="pt-4 border-t border-slate-200/80 w-full">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">Connect On Social Media</p>
+                <div className="flex justify-center gap-2.5">
+                  <a href="https://www.instagram.com/riennedigitalsolutions?stkn=MTM1ZjYxajFiN2V5bA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-prussian hover:bg-accent hover:text-white hover:border-accent transition-all shadow-sm">
+                    <Instagram className="w-4 h-4" />
+                  </a>
+                  <a href="https://www.tiktok.com/@riennedigitalsolu?_r=1&_t=ZS-99aeOi95LiZ" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-prussian hover:bg-accent hover:text-white hover:border-accent transition-all shadow-sm">
+                    <TikTokIcon className="w-4 h-4" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/rienne-digital-solutions/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-prussian hover:bg-accent hover:text-white hover:border-accent transition-all shadow-sm">
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                  <a href="https://www.facebook.com/share/19mSuAuXCP/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-9 h-9 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-prussian hover:bg-accent hover:text-white hover:border-accent transition-all shadow-sm">
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
