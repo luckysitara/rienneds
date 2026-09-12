@@ -17,7 +17,8 @@ import {
   Megaphone,
   HelpCircle,
   Sparkles,
-  Layers
+  Layers,
+  Tag
 } from "lucide-react";
 
 // Official NYSC Google Form URL
@@ -33,6 +34,9 @@ export interface NyscCourse {
   level: string;
   image: string;
   icon: React.ReactNode;
+  regularPrice: string;
+  cohortPrice: string;
+  discount: string;
   highlights: string[];
   tools: string[];
 }
@@ -48,6 +52,9 @@ export const nyscCourses: NyscCourse[] = [
     level: "Beginner to Intermediate",
     image: "/ethical-hacking.jpg",
     icon: <Shield className="w-6 h-6 text-accent" />,
+    regularPrice: "₦250,000",
+    cohortPrice: "₦100,000",
+    discount: "60% OFF",
     highlights: [
       "Ethical Hacking & Network Hardening",
       "Linux Security & Command Line Mastery",
@@ -64,8 +71,11 @@ export const nyscCourses: NyscCourse[] = [
     description: "Accelerate brands through high-ROI digital marketing. Learn search engine optimization (SEO), Meta and Google ad strategies, content funnels, and data analytics.",
     duration: "8 Weeks • Flexible Evenings & Weekends",
     level: "Beginner Friendly",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+    image: "/digital-marketing.jpg",
     icon: <Megaphone className="w-6 h-6 text-accent" />,
+    regularPrice: "₦100,000",
+    cohortPrice: "₦50,000",
+    discount: "50% OFF",
     highlights: [
       "Performance Ads (Meta, Google, TikTok)",
       "Technical SEO & Content Strategy",
@@ -78,12 +88,15 @@ export const nyscCourses: NyscCourse[] = [
     id: "software-development",
     name: "Software Development",
     category: "Engineering & AI",
-    tag: "Flagship Track",
-    description: "Full-stack web and mobile application engineering. Build scalable applications from scratch using modern JavaScript/TypeScript, React, Node.js, and database systems.",
+    tag: "Frontend & Backend",
+    description: "Full-stack web and mobile engineering covering Frontend and Backend. Build scalable applications from scratch using modern JavaScript/TypeScript, React, Node.js, and database systems.",
     duration: "16 Weeks • Flexible Evenings & Weekends",
     level: "Beginner to Intermediate",
     image: "/software-development.jpg",
     icon: <Code className="w-6 h-6 text-accent" />,
+    regularPrice: "₦300,000",
+    cohortPrice: "₦100,000",
+    discount: "67% OFF",
     highlights: [
       "Modern Frontend with React & Tailwind CSS",
       "Backend REST & GraphQL APIs with Node.js",
@@ -100,8 +113,11 @@ export const nyscCourses: NyscCourse[] = [
     description: "Dive into intelligent systems, deep learning, and generative AI. Learn Python for AI, neural networks, natural language processing (NLP), and how to build LLM-powered applications.",
     duration: "12 Weeks • Flexible Evenings & Weekends",
     level: "Intermediate",
-    image: "https://images.unsplash.com/photo-1677442136019-21780efad99a?q=80&w=2664&auto=format&fit=crop",
+    image: "/ai-machine-learning.jpg",
     icon: <BrainCircuit className="w-6 h-6 text-accent" />,
+    regularPrice: "₦250,000",
+    cohortPrice: "₦100,000",
+    discount: "60% OFF",
     highlights: [
       "Python for Machine Learning & Scikit-Learn",
       "Neural Networks & Deep Learning Architectures",
@@ -118,8 +134,11 @@ export const nyscCourses: NyscCourse[] = [
     description: "Extract actionable insights and predictive forecasts from complex business data. Master data wrangling, advanced statistical analysis, machine learning algorithms, and visualization.",
     duration: "12 Weeks • Flexible Evenings & Weekends",
     level: "Beginner to Intermediate",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+    image: "/data-science.jpg",
     icon: <Database className="w-6 h-6 text-accent" />,
+    regularPrice: "₦250,000",
+    cohortPrice: "₦100,000",
+    discount: "60% OFF",
     highlights: [
       "Data Cleaning & Manipulation with Pandas & NumPy",
       "Exploratory Data Analysis (EDA) & Hypothesis Testing",
@@ -136,8 +155,11 @@ export const nyscCourses: NyscCourse[] = [
     description: "Transform complex operational numbers into high-level business intelligence. Master advanced Microsoft Excel, SQL querying, Power BI, and interactive executive reporting.",
     duration: "10 Weeks • Flexible Evenings & Weekends",
     level: "Beginner Friendly",
-    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2676&auto=format&fit=crop",
+    image: "/data-analysis.jpg",
     icon: <ChartLine className="w-6 h-6 text-accent" />,
+    regularPrice: "₦250,000",
+    cohortPrice: "₦100,000",
+    discount: "60% OFF",
     highlights: [
       "Advanced Excel (Power Query, DAX, Pivot Modeling)",
       "Relational Database Querying with SQL",
@@ -154,8 +176,11 @@ export const nyscCourses: NyscCourse[] = [
     description: "Design intuitive, delightful digital interfaces for mobile and web products. Master Figma, user research, low-to-high fidelity wireframing, design systems, and usability testing.",
     duration: "10 Weeks • Flexible Evenings & Weekends",
     level: "Beginner Friendly",
-    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=2671&auto=format&fit=crop",
+    image: "/uiux-design.jpg",
     icon: <Palette className="w-6 h-6 text-accent" />,
+    regularPrice: "₦200,000",
+    cohortPrice: "₦100,000",
+    discount: "50% OFF",
     highlights: [
       "User Experience (UX) Research & Personas",
       "Figma Mastery, Auto-Layout & Design Systems",
@@ -172,8 +197,11 @@ export const nyscCourses: NyscCourse[] = [
     description: "Produce broadcast-quality, cinematic video content for social platforms, brands, and YouTube. Master pacing, motion graphics, color grading, sound design, and viral storytelling.",
     duration: "8 Weeks • Flexible Evenings & Weekends",
     level: "Beginner Friendly",
-    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2670&auto=format&fit=crop",
+    image: "/video-editing.jpg",
     icon: <Video className="w-6 h-6 text-accent" />,
+    regularPrice: "₦100,000",
+    cohortPrice: "₦50,000",
+    discount: "50% OFF",
     highlights: [
       "Non-Linear Editing & Timeline Workflow",
       "Cinematic Color Grading & Visual Effects",
@@ -222,7 +250,7 @@ export default function NyscAcademy() {
     {
       num: "01",
       title: "Open Registration Form",
-      desc: "Click any 'Apply' button to open our dedicated Google Form (takes less than 2 minutes to complete)."
+      desc: "Click any 'Enroll' button to open our dedicated Google Form (takes less than 2 minutes to complete)."
     },
     {
       num: "02",
@@ -240,6 +268,10 @@ export default function NyscAcademy() {
     {
       q: "Which courses can I register for in the NYSC cohort?",
       a: "All 8 courses listed above are fully open for registration: Cybersecurity, Digital Marketing, Software Development, AI & Machine Learning, Data Science, Data Analysis, UI/UX Design, and Video Editing."
+    },
+    {
+      q: "What are the cohort prices for corps members?",
+      a: "Serving NYSC members receive a subsidized discount of 50% to 67% off regular tuition fees. For example, Digital Marketing and Video Editing are ₦50,000 (50% off), while Cybersecurity, Software Development, AI & ML, Data Science, Data Analysis, and UI/UX Design are ₦100,000."
     },
     {
       q: "Can I participate if I am posted to a remote PPA or distant state?",
@@ -299,7 +331,7 @@ export default function NyscAcademy() {
             className="text-lg sm:text-xl text-slate-600 font-medium leading-relaxed max-w-3xl mx-auto mb-12"
           >
             A dedicated academy cohort built for National Youth Service Corps members. 
-            Master in-demand skills in <span className="text-prussian font-black">Cybersecurity, Software Development, AI, Data, Design, and Media</span> with flexible classes structured around your PPA and CDS commitments.
+            Master in-demand skills in <span className="text-prussian font-black">Cybersecurity, Software Development, AI, Data, Design, and Media</span> with up to <span className="text-emerald-600 font-black">67% cohort discount</span> structured around your PPA and CDS commitments.
           </motion.p>
 
           <motion.div
@@ -314,7 +346,7 @@ export default function NyscAcademy() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-accent-light transition-all shadow-2xl uppercase tracking-wider group"
             >
-              Apply to Any Course Track
+              Apply via Google Form
               <ExternalLink className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
             <a
@@ -327,7 +359,7 @@ export default function NyscAcademy() {
 
           <div className="flex flex-wrap items-center justify-center gap-6 mt-10 text-xs font-bold text-slate-500 uppercase tracking-widest">
             <span className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" /> NYSC Subsidized Rates
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Up to 67% NYSC Subsidy
             </span>
             <span className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" /> Evening & Weekend Sprints
@@ -385,7 +417,7 @@ export default function NyscAcademy() {
               Select Your Tech Specialization.
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed">
-              Choose from any of the official 8 courses below to register in the Google Form. All tracks are fully subsidized for serving corps members:
+              Every course below features an exclusive subsidized cohort price for serving corps members. Select your course and register via the Google Form:
             </p>
           </div>
 
@@ -419,18 +451,21 @@ export default function NyscAcademy() {
               >
                 <div>
                   {/* Image & Badges */}
-                  <div className="relative h-60 w-full overflow-hidden bg-slate-100">
+                  <div className="relative h-60 w-full overflow-hidden bg-slate-900">
                     <img
                       src={course.image}
                       alt={course.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.src = "/software-development.jpg";
+                      }}
                     />
-                    <div className="absolute top-4 left-4 bg-prussian text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg backdrop-blur-md">
+                    <div className="absolute top-4 left-4 bg-prussian/90 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg backdrop-blur-md">
                       {course.tag}
                     </div>
-                    <div className="absolute top-4 right-4 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg shadow">
-                      NYSC Subsidized
+                    <div className="absolute top-4 right-4 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-lg flex items-center gap-1.5">
+                      <Tag className="w-3 h-3" /> {course.discount}
                     </div>
                   </div>
 
@@ -494,15 +529,25 @@ export default function NyscAcademy() {
                   </div>
                 </div>
 
-                {/* Card Footer CTA */}
+                {/* Card Footer CTA with Full Transparent Pricing */}
                 <div className="p-8 pt-4 border-t border-slate-100 mt-auto flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">
-                      Corps Member Rate
-                    </span>
-                    <span className="text-base font-black text-emerald-600 font-heading uppercase tracking-wide">
-                      Concessionary Fee
-                    </span>
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-xs text-slate-400 font-bold line-through">
+                        {course.regularPrice}
+                      </span>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                        {course.discount}
+                      </span>
+                    </div>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-2xl font-black text-prussian font-heading">
+                        {course.cohortPrice}
+                      </span>
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                        Cohort Rate
+                      </span>
+                    </div>
                   </div>
 
                   <a
