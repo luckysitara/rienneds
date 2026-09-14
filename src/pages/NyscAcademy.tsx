@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { 
   ExternalLink, 
@@ -33,7 +34,7 @@ export interface NyscCourse {
   duration: string;
   level: string;
   image: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   regularPrice: string;
   cohortPrice: string;
   discount: string;
@@ -612,7 +613,7 @@ export default function NyscAcademy() {
                   {faq.q}
                 </h4>
                 <p className="text-slate-600 text-sm leading-relaxed pl-8">
-                  {faq.answer}
+                  {faq.a}
                 </p>
               </div>
             ))}
