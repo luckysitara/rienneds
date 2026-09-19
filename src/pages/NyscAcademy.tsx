@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { 
@@ -22,8 +22,16 @@ import {
   Tag
 } from "lucide-react";
 
-// Official NYSC Google Form URL
-export const NYSC_GOOGLE_FORM_URL = "https://forms.gle/a76TSjSG4aRDtTSq8";
+// Official NYSC Google Form Base URL (with referral mapping)
+export const BASE_GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScLMG_PCphU3jNuvDk8eQd_OHrq4_9XUCmvUDRw9cn5sUouGQ/viewform?usp=pp_url";
+
+export const getReferralFormUrl = (customRef?: string): string => {
+  const code = customRef !== undefined 
+    ? customRef 
+    : (typeof window !== "undefined" ? localStorage.getItem("rienne_referral_code") || "" : "");
+  return `${BASE_GOOGLE_FORM_URL}&entry.767387672=${encodeURIComponent(code)}`;
+};
 
 export interface NyscCourse {
   id: string;
@@ -215,6 +223,80 @@ export const nyscCourses: NyscCourse[] = [
 
 export default function NyscAcademy() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [formUrl, setFormUrl] = useState<string>(() => {
+    if (typeof window === "undefined") return BASE_GOOGLE_FORM_URL;
+    const params = new URLSearchParams(window.location.search);
+    const referralCode = params.get("ref");
+    if (referralCode) {
+      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
+    }
+    const saved = localStorage.getItem("rienne_referral_code") || "";
+    return getReferralFormUrl(saved);
+  });
+
+  useEffect(() => {
+    // 1. Get referral code from the website URL
+    const params = new URLSearchParams(window.location.search);
+    const referralCode = params.get("ref");
+
+    // 2. Save the referral code in the visitor's browser
+    if (referralCode) {
+      localStorage.setItem(
+        "rienne_referral_code",
+        referralCode.toUpperCase()
+      );
+    }
+
+    const savedReferralCode =
+      localStorage.getItem("rienne_referral_code") || "";
+
+    const targetFormUrl = getReferralFormUrl(savedReferralCode);
+    setFormUrl(targetFormUrl);
+
+    // 3. Find the registration button
+    const registerButton = document.getElementById("register-button");
+
+    const onRegisterClick = (e: MouseEvent) => {
+      e.preventDefault();
+
+      // Get the saved referral code
+      const currentSavedCode =
+        localStorage.getItem("rienne_referral_code");
+
+      // Google Form URL
+      const finalFormUrl =
+        "https://docs.google.com/forms/d/e/" +
+        "1FAIpQLScLMG_PCphU3jNuvDk8eQd_OHrq4_9XUCmvUDRw9cn5sUouGQ" +
+        "/viewform?usp=pp_url" +
+        "&entry.767387672=" +
+        encodeURIComponent(currentSavedCode || "");
+
+      // Send the visitor to the form
+      window.location.href = finalFormUrl;
+    };
+
+    if (registerButton) {
+      registerButton.addEventListener("click", onRegisterClick);
+    }
+
+    return () => {
+      if (registerButton) {
+        registerButton.removeEventListener("click", onRegisterClick);
+      }
+    };
+  }, []);
+
+  const handleRegisterNavigation = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const savedReferralCode = localStorage.getItem("rienne_referral_code");
+    const targetUrl =
+      "https://docs.google.com/forms/d/e/" +
+      "1FAIpQLScLMG_PCphU3jNuvDk8eQd_OHrq4_9XUCmvUDRw9cn5sUouGQ" +
+      "/viewform?usp=pp_url" +
+      "&entry.767387672=" +
+      encodeURIComponent(savedReferralCode || "");
+    window.location.href = targetUrl;
+  };
 
   const categories = [
     "All",
@@ -342,7 +424,9 @@ export default function NyscAcademy() {
             className="flex flex-col sm:flex-row gap-5 justify-center items-center"
           >
             <a
-              href={NYSC_GOOGLE_FORM_URL}
+              href={formUrl}
+              id="register-button"
+              onClick={handleRegisterNavigation}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-accent text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-accent-light transition-all shadow-2xl uppercase tracking-wider group"
@@ -552,7 +636,8 @@ export default function NyscAcademy() {
                   </div>
 
                   <a
-                    href={NYSC_GOOGLE_FORM_URL}
+                    href={formUrl}
+                    onClick={handleRegisterNavigation}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-prussian text-white hover:bg-accent px-6 py-3.5 rounded-xl font-black text-xs uppercase tracking-wider transition-all shadow-md group"
@@ -634,7 +719,8 @@ export default function NyscAcademy() {
                 Click below to fill out the Google Form and secure your slot for any of the 8 specialized courses.
               </p>
               <a
-                href={NYSC_GOOGLE_FORM_URL}
+                href={formUrl}
+                onClick={handleRegisterNavigation}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-accent text-white px-12 py-6 rounded-2xl font-black text-xl hover:bg-accent-light transition-all shadow-2xl uppercase tracking-widest group"
