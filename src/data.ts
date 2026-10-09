@@ -535,7 +535,7 @@ export const courses = tracks.flatMap(t => t.courses);
 
 // Official Academy Registration Google Form URL
 export const ACADEMY_GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfIOSWhxcvQEQ_el6cHgQAMB9JKjElRCjeMLYKYukY-j5hE5A/viewform?usp=header";
+  "https://docs.google.com/forms/d/e/1FAIpQLSc0CXn4BbPnlNy-OC_D0jPJcHpppb8jp-5dUBFaJ4g7XeaqYA/viewform?usp=header";
 
 // Official NYSC Cohort Google Form URL (with referral code tracking)
 export const NYSC_GOOGLE_FORM_URL =
