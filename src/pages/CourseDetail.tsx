@@ -9,7 +9,7 @@ import { useState } from "react";
 
 export default function CourseDetail() {
   const { id } = useParams();
-  const course = courses.find((c) => c.id === id);
+  const course = courses.find((c) => c.id === id || c.aliases?.includes(id || ""));
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
 
   if (!course) {
@@ -205,8 +205,26 @@ export default function CourseDetail() {
                 </div>
 
                 <div className="relative z-10">
-                  <div className="text-[10px] font-black uppercase tracking-[0.3em] text-accent-light mb-6">Program Investment</div>
-                  <div className="text-6xl font-black font-heading mb-10 uppercase tracking-tighter">{course.price}</div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-accent-light">Program Investment</div>
+                    {course.discount && (
+                      <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 text-[10px] font-black uppercase tracking-widest">
+                        {course.discount}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="mb-10">
+                    {course.regularPrice && (
+                      <div className="text-sm font-bold text-slate-400 line-through mb-1">
+                        Normal: {course.regularPrice}
+                      </div>
+                    )}
+                    <div className="text-5xl md:text-6xl font-black font-heading uppercase tracking-tighter text-white">
+                      {course.price}
+                    </div>
+                    <p className="text-xs text-slate-300 mt-2 font-medium">Discounted current full course tuition</p>
+                  </div>
                   
                   <div className="space-y-6 mb-12">
                     {[

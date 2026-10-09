@@ -187,9 +187,13 @@ export default function Contact() {
                         <option value="Content Creation">Content Creation & Strategy</option>
                       </optgroup>
                       <optgroup label="Technical Academy">
-                        <option value="Cybersecurity Academy">Cybersecurity Foundations Track</option>
-                        <option value="Software Engineering Academy">Full-Stack Web Engineering Track</option>
-                        <option value="Leadership Academy">Tech Leadership & Foundations</option>
+                        <option value="Cybersecurity">Cybersecurity (₦100,000 / Discounted)</option>
+                        <option value="Software Development">Software Development (₦100,000 / Discounted)</option>
+                        <option value="UI/UX Design">UI/UX Design (₦100,000 / Discounted)</option>
+                        <option value="Data Analysis">Data Analysis (₦100,000 / Discounted)</option>
+                        <option value="Digital Marketing">Digital Marketing (₦50,000 / Discounted)</option>
+                        <option value="Video Editing">Video Editing (₦50,000 / Discounted)</option>
+                        <option value="AI Video Automation">AI Video Automation / YouTube Monetization (₦50,000 / Discounted)</option>
                         <option value="Corporate Training">Corporate Team Training</option>
                       </optgroup>
                       <option value="Other">Other / General Inquiry</option>

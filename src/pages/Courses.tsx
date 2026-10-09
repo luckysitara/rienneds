@@ -65,9 +65,21 @@ export default function Courses() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-auto">
-                    <span className="text-2xl font-black text-prussian font-heading">{course.price}</span>
-                    <div className="bg-prussian text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest group-hover:bg-accent transition-all flex items-center gap-3">
+                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-slate-100">
+                    <div className="flex flex-col">
+                      {course.regularPrice && (
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs text-slate-400 line-through font-bold">{course.regularPrice}</span>
+                          {course.discount && (
+                            <span className="text-[10px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-md uppercase tracking-wider">
+                              {course.discount}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      <span className="text-2xl font-black text-prussian font-heading">{course.price}</span>
+                    </div>
+                    <div className="bg-prussian text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-xs font-black uppercase tracking-widest group-hover:bg-accent transition-all flex items-center gap-2.5 shadow-md">
                       Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
