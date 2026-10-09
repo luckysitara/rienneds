@@ -1,9 +1,29 @@
 import { motion } from "motion/react";
-import { BookOpen, Users, Star, Clock, ArrowRight, GraduationCap } from "lucide-react";
-import { courses } from "../data";
+import { BookOpen, Users, Star, Clock, GraduationCap, ExternalLink } from "lucide-react";
+import { courses, BASE_GOOGLE_FORM_URL, getReferralFormUrl } from "../data";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function Courses() {
+  const [formUrl, setFormUrl] = useState<string>(() => {
+    if (typeof window === "undefined") return BASE_GOOGLE_FORM_URL;
+    const params = new URLSearchParams(window.location.search);
+    const referralCode = params.get("ref");
+    if (referralCode) {
+      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
+    }
+    return getReferralFormUrl();
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const referralCode = params.get("ref");
+    if (referralCode) {
+      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
+    }
+    setFormUrl(getReferralFormUrl());
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -12,7 +32,7 @@ export default function Courses() {
       className="pt-40 pb-24 bg-mesh"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -21,11 +41,33 @@ export default function Courses() {
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
             Technical Academy
           </motion.div>
-          <h1 className="text-4xl md:text-6xl font-black text-prussian mb-8 uppercase font-heading tracking-tighter">Master the Digital <br/> Economy.</h1>
-          <p className="text-xl text-slate-600 font-medium leading-relaxed">Join our expert-led career tracks and accelerate your journey from talent to global tech leader.</p>
+          <h1 className="text-4xl md:text-6xl font-black text-prussian mb-8 uppercase font-heading tracking-tighter">
+            Master the Digital <br/> Economy.
+          </h1>
+          <p className="text-xl text-slate-600 font-medium leading-relaxed">
+            Join our expert-led career tracks and accelerate your journey from talent to global tech leader. Current cohorts feature limited-time subsidized discount tuition fees.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+            <a
+              href={formUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 bg-accent text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-accent-light transition-all shadow-xl active:scale-95 group"
+            >
+              Apply via Google Form
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+            <a
+              href="#academy-courses"
+              className="inline-flex items-center gap-2 bg-white text-prussian border border-slate-200 px-8 py-4 rounded-2xl font-bold text-sm uppercase tracking-wider hover:bg-slate-50 transition-all shadow-sm"
+            >
+              Explore 7 Career Tracks
+            </a>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div id="academy-courses" className="grid lg:grid-cols-2 gap-10 scroll-mt-32">
           {courses.map((course, index) => (
             <motion.div
               key={course.id}
@@ -34,11 +76,13 @@ export default function Courses() {
               transition={{ delay: index * 0.1 }}
               className="group"
             >
-              <Link 
-                to={`/courses/${course.id}`}
-                className="block bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-slate-100 flex flex-col sm:flex-row h-full relative"
+              <div 
+                className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-slate-100 flex flex-col sm:flex-row h-full relative"
               >
-                <div className="sm:w-2/5 relative min-h-[250px] sm:h-auto overflow-hidden">
+                <Link 
+                  to={`/courses/${course.id}`}
+                  className="sm:w-2/5 relative min-h-[250px] sm:h-auto overflow-hidden block"
+                >
                   <img 
                     src={course.image} 
                     alt={course.title} 
@@ -48,12 +92,18 @@ export default function Courses() {
                   <div className="absolute top-6 left-6 bg-prussian text-white text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl backdrop-blur-md">
                     {course.category}
                   </div>
-                </div>
-                <div className="sm:w-3/5 p-10 flex flex-col justify-between">
+                </Link>
+                <div className="sm:w-3/5 p-8 sm:p-10 flex flex-col justify-between">
                   <div>
-                    <h4 className="text-2xl font-black text-prussian mb-4 group-hover:text-accent transition-colors font-heading uppercase leading-tight">{course.title}</h4>
-                    <p className="text-slate-500 text-sm font-bold uppercase tracking-widest mb-6">Expert: {course.instructor}</p>
-                    <div className="flex flex-wrap gap-6 mb-8">
+                    <Link to={`/courses/${course.id}`} className="block group/title">
+                      <h4 className="text-2xl font-black text-prussian mb-3 group-hover/title:text-accent transition-colors font-heading uppercase leading-tight">
+                        {course.title}
+                      </h4>
+                    </Link>
+                    <p className="text-slate-500 text-xs sm:text-sm font-bold uppercase tracking-widest mb-6">
+                      Expert: {course.instructor}
+                    </p>
+                    <div className="flex flex-wrap gap-4 sm:gap-6 mb-8">
                       <div className="flex items-center gap-2 text-slate-600 text-xs font-bold uppercase tracking-widest">
                         <Clock className="w-4 h-4 text-accent" /> {course.duration}
                       </div>
@@ -65,7 +115,8 @@ export default function Courses() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-slate-100">
+
+                  <div className="flex items-center justify-between mt-auto pt-6 border-t border-slate-100 flex-wrap gap-4">
                     <div className="flex flex-col">
                       {course.regularPrice && (
                         <div className="flex items-center gap-2 mb-1">
@@ -79,12 +130,27 @@ export default function Courses() {
                       )}
                       <span className="text-2xl font-black text-prussian font-heading">{course.price}</span>
                     </div>
-                    <div className="bg-prussian text-white px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl text-xs font-black uppercase tracking-widest group-hover:bg-accent transition-all flex items-center gap-2.5 shadow-md">
-                      Apply Now <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+
+                    <div className="flex items-center gap-3">
+                      <Link
+                        to={`/courses/${course.id}`}
+                        className="text-xs font-bold text-slate-500 hover:text-accent uppercase tracking-wider hidden sm:inline-block transition-colors"
+                      >
+                        Syllabus
+                      </Link>
+                      <a
+                        href={formUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-prussian text-white px-6 sm:px-7 py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-accent transition-all flex items-center gap-2 shadow-md active:scale-95 group/btn"
+                      >
+                        Apply Now
+                        <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                      </a>
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -110,6 +176,18 @@ export default function Courses() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-12">
+                <a
+                  href={formUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-accent text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-accent-light transition-all shadow-xl active:scale-95 group"
+                >
+                  Apply via Google Form
+                  <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
               </div>
             </div>
             <div className="relative hidden lg:block">

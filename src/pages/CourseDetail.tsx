@@ -2,15 +2,34 @@ import { useParams, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   ArrowLeft, CheckCircle2, Star, Clock, Users, ArrowRight, ShieldCheck, 
-  HelpCircle, BookOpen, GraduationCap, Laptop, MessageCircle 
+  HelpCircle, BookOpen, GraduationCap, Laptop, MessageCircle, ExternalLink 
 } from "lucide-react";
-import { courses } from "../data";
-import { useState } from "react";
+import { courses, BASE_GOOGLE_FORM_URL, getReferralFormUrl } from "../data";
+import { useState, useEffect } from "react";
 
 export default function CourseDetail() {
   const { id } = useParams();
   const course = courses.find((c) => c.id === id || c.aliases?.includes(id || ""));
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
+
+  const [formUrl, setFormUrl] = useState<string>(() => {
+    if (typeof window === "undefined") return BASE_GOOGLE_FORM_URL;
+    const params = new URLSearchParams(window.location.search);
+    const referralCode = params.get("ref");
+    if (referralCode) {
+      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
+    }
+    return getReferralFormUrl();
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const referralCode = params.get("ref");
+    if (referralCode) {
+      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
+    }
+    setFormUrl(getReferralFormUrl());
+  }, []);
 
   if (!course) {
     return (
@@ -240,16 +259,21 @@ export default function CourseDetail() {
                     ))}
                   </div>
 
-                  <Link 
-                    to="/contact" 
-                    className="block w-full bg-white text-prussian py-6 rounded-2xl font-black uppercase tracking-widest text-center hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95"
+                  <a 
+                    href={formUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-white text-prussian py-6 rounded-2xl font-black uppercase tracking-widest text-center hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95 flex items-center justify-center gap-2 group/btn"
                   >
-                    Enroll Now
-                  </Link>
+                    Apply via Google Form
+                    <ExternalLink className="w-5 h-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  </a>
                   
                   <div className="mt-8 pt-8 border-t border-white/10 flex items-center justify-center gap-2">
                      <MessageCircle className="w-4 h-4 text-accent-light" />
-                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Questions? Talk to an advisor</p>
+                     <Link to="/contact" className="text-[10px] font-black text-slate-300 hover:text-white uppercase tracking-widest transition-colors">
+                       Questions? Talk to an advisor
+                     </Link>
                   </div>
                 </div>
                 
