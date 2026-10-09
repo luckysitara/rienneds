@@ -65,7 +65,7 @@ export default function Home() {
                 <Link to="/contact" className="bg-prussian text-white px-10 py-5 rounded-2xl font-bold hover:bg-accent transition-all flex items-center justify-center gap-2 shadow-xl shadow-prussian/20 group">
                   Initiate Project <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/courses" className="bg-white/80 backdrop-blur-md text-prussian px-10 py-5 rounded-2xl font-bold hover:bg-white transition-all text-center border border-slate-200 shadow-sm">
+                <Link to="/academy" className="bg-white/80 backdrop-blur-md text-prussian px-10 py-5 rounded-2xl font-bold hover:bg-white transition-all text-center border border-slate-200 shadow-sm">
                   Join The Academy
                 </Link>
               </motion.div>
@@ -197,7 +197,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="font-black text-prussian uppercase text-sm mb-1 font-heading">{track.name}</h4>
-                      <Link to="/courses" className="text-xs font-bold text-slate-400 group-hover:text-accent flex items-center gap-1 transition-colors">
+                      <Link to="/academy" className="text-xs font-bold text-slate-400 group-hover:text-accent flex items-center gap-1 transition-colors">
                         Apply Now <ChevronRight className="w-3 h-3" />
                       </Link>
                     </div>

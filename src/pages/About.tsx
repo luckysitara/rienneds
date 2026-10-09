@@ -113,7 +113,7 @@ export default function About() {
             <a href="/contact" className="bg-indigo-600 text-white px-10 py-5 rounded-full font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200">
               Start a Partnership
             </a>
-            <a href="/courses" className="bg-white text-slate-900 border border-slate-200 px-10 py-5 rounded-full font-bold hover:bg-slate-50 transition-all">
+            <a href="/academy" className="bg-white text-slate-900 border border-slate-200 px-10 py-5 rounded-full font-bold hover:bg-slate-50 transition-all">
               Join the Academy
             </a>
           </div>

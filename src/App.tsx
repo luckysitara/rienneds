@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { AnimatePresence } from "motion/react";
 import Navbar from "./components/Navbar";
@@ -28,6 +28,11 @@ function ScrollToTop() {
   return null;
 }
 
+function LegacyCourseRedirect() {
+  const { id } = useParams();
+  return <Navigate to={`/academy/${id}`} replace />;
+}
+
 export default function App() {
   return (
     <Router>
@@ -42,8 +47,10 @@ export default function App() {
               <Route path="/services/:id" element={<ServiceDetail />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/courses" element={<Courses />} />
-              <Route path="/courses/:id" element={<CourseDetail />} />
+              <Route path="/academy" element={<Courses />} />
+              <Route path="/academy/:id" element={<CourseDetail />} />
+              <Route path="/courses" element={<Navigate to="/academy" replace />} />
+              <Route path="/courses/:id" element={<LegacyCourseRedirect />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/nysc" element={<NyscAcademy />} />
             </Routes>

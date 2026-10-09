@@ -71,7 +71,7 @@ export default function Courses() {
                 className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-slate-100 flex flex-col sm:flex-row h-full relative"
               >
                 <Link 
-                  to={`/courses/${course.id}`}
+                  to={`/academy/${course.id}`}
                   className="sm:w-2/5 relative min-h-[250px] sm:h-auto overflow-hidden block"
                 >
                   <img 
@@ -86,7 +86,7 @@ export default function Courses() {
                 </Link>
                 <div className="sm:w-3/5 p-8 sm:p-10 flex flex-col justify-between">
                   <div>
-                    <Link to={`/courses/${course.id}`} className="block group/title">
+                    <Link to={`/academy/${course.id}`} className="block group/title">
                       <h4 className="text-2xl font-black text-prussian mb-3 group-hover/title:text-accent transition-colors font-heading uppercase leading-tight">
                         {course.title}
                       </h4>
@@ -124,7 +124,7 @@ export default function Courses() {
 
                     <div className="flex items-center gap-3">
                       <Link
-                        to={`/courses/${course.id}`}
+                        to={`/academy/${course.id}`}
                         className="text-xs font-bold text-slate-500 hover:text-accent uppercase tracking-wider hidden sm:inline-block transition-colors"
                       >
                         Syllabus

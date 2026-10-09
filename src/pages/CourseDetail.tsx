@@ -26,7 +26,7 @@ export default function CourseDetail() {
     return (
       <div className="pt-40 pb-24 text-center">
         <h2 className="text-2xl font-bold text-prussian font-heading">Course not found</h2>
-        <Link to="/courses" className="text-accent mt-4 inline-block font-bold">Back to Academy</Link>
+        <Link to="/academy" className="text-accent mt-4 inline-block font-bold">Back to Academy</Link>
       </div>
     );
   }
@@ -40,7 +40,7 @@ export default function CourseDetail() {
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Breadcrumb */}
-        <Link to="/courses" className="inline-flex items-center gap-2 text-prussian font-bold text-xs uppercase tracking-[0.2em] hover:text-accent transition-colors mb-12">
+        <Link to="/academy" className="inline-flex items-center gap-2 text-prussian font-bold text-xs uppercase tracking-[0.2em] hover:text-accent transition-colors mb-12">
           <ArrowLeft className="w-4 h-4" /> Back to Academy
         </Link>
 
