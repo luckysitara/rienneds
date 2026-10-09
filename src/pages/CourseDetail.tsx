@@ -265,7 +265,7 @@ export default function CourseDetail() {
                     rel="noopener noreferrer"
                     className="block w-full bg-white text-prussian py-6 rounded-2xl font-black uppercase tracking-widest text-center hover:bg-accent hover:text-white transition-all shadow-xl active:scale-95 flex items-center justify-center gap-2 group/btn"
                   >
-                    Apply via Google Form
+                    Apply Now
                     <ExternalLink className="w-5 h-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </a>
                   

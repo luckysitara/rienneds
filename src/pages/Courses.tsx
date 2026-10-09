@@ -55,7 +55,7 @@ export default function Courses() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 bg-accent text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-accent-light transition-all shadow-xl active:scale-95 group"
             >
-              Apply via Google Form
+              Apply Now
               <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
             <a
@@ -185,7 +185,7 @@ export default function Courses() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-accent text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-accent-light transition-all shadow-xl active:scale-95 group"
                 >
-                  Apply via Google Form
+                  Apply Now
                   <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
