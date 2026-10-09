@@ -1,19 +1,11 @@
 import { motion } from "motion/react";
 import { BookOpen, Users, Star, Clock, GraduationCap, ExternalLink } from "lucide-react";
-import { courses, BASE_GOOGLE_FORM_URL, getReferralFormUrl } from "../data";
+import { courses, ACADEMY_GOOGLE_FORM_URL } from "../data";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Courses() {
-  const [formUrl, setFormUrl] = useState<string>(() => {
-    if (typeof window === "undefined") return BASE_GOOGLE_FORM_URL;
-    const params = new URLSearchParams(window.location.search);
-    const referralCode = params.get("ref");
-    if (referralCode) {
-      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
-    }
-    return getReferralFormUrl();
-  });
+  const formUrl = ACADEMY_GOOGLE_FORM_URL;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -21,7 +13,6 @@ export default function Courses() {
     if (referralCode) {
       localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
     }
-    setFormUrl(getReferralFormUrl());
   }, []);
 
   return (

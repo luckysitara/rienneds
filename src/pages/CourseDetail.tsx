@@ -4,7 +4,7 @@ import {
   ArrowLeft, CheckCircle2, Star, Clock, Users, ArrowRight, ShieldCheck, 
   HelpCircle, BookOpen, GraduationCap, Laptop, MessageCircle, ExternalLink 
 } from "lucide-react";
-import { courses, BASE_GOOGLE_FORM_URL, getReferralFormUrl } from "../data";
+import { courses, ACADEMY_GOOGLE_FORM_URL } from "../data";
 import { useState, useEffect } from "react";
 
 export default function CourseDetail() {
@@ -12,15 +12,7 @@ export default function CourseDetail() {
   const course = courses.find((c) => c.id === id || c.aliases?.includes(id || ""));
   const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
 
-  const [formUrl, setFormUrl] = useState<string>(() => {
-    if (typeof window === "undefined") return BASE_GOOGLE_FORM_URL;
-    const params = new URLSearchParams(window.location.search);
-    const referralCode = params.get("ref");
-    if (referralCode) {
-      localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
-    }
-    return getReferralFormUrl();
-  });
+  const formUrl = ACADEMY_GOOGLE_FORM_URL;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -28,7 +20,6 @@ export default function CourseDetail() {
     if (referralCode) {
       localStorage.setItem("rienne_referral_code", referralCode.toUpperCase());
     }
-    setFormUrl(getReferralFormUrl());
   }, []);
 
   if (!course) {
